@@ -1,0 +1,107 @@
+<html>
+
+
+
+<head>
+
+    <title>Assignment 12</title>
+
+</head>
+
+
+
+<body>
+
+    <center>
+
+        <div >
+
+            <h1>Assignment 12</h1>
+
+    <form>
+
+        <label for="country">Please Select Your Country:</label>
+
+        <select name="country" id="country" onchange="display()">
+
+            <option value="select" selected>Please Select</option>
+
+            <option value="india">India</option>
+
+            <option value="aus">Australia</option>
+
+            <option value="uk">United Kingdom</option>
+
+            <option value="japan">Japan</option>
+
+            <option value="canada">Canada</option>
+
+        </select>
+
+        <p>Your Selected Country :</p>
+
+        <p></p>
+
+        <p id="result"></p>
+
+    </form>
+
+        </div>
+
+</center>
+
+    <script>
+
+        function display() {
+
+            var element = document.getElementById("country");
+
+            console.log("in display");  
+
+            if (element.value == "select") {
+
+                document.getElementById("result").innerHTML = "India <br> Australia <br> United Kingdom <br> Japan <br> Canada";
+
+            }
+
+            if (element.value == "india") {
+
+                document.getElementById("result").innerHTML = "<h2>India</h2>";
+
+            }
+
+            if (element.value == "aus") {
+
+                document.getElementById("result").innerHTML = "<h2> Australia</h2> ";
+
+            }
+
+            if (element.value == "uk") {
+
+                document.getElementById("result").innerHTML = "<h2>United Kingdom<h2>";
+
+            }
+
+            if (element.value == "japan") {
+
+                document.getElementById("result").innerHTML = "<h2>Japan</h2>";
+
+            }
+
+            if (element.value == "canada") {
+
+                document.getElementById("result").innerHTML = "<h2>Canada</h2>";
+
+            }
+
+        }
+
+    </script>
+
+
+
+</body>
+
+
+
+</html>

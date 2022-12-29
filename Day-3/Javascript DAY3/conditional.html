@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>Conditional</title>
+</head>
+<body>
+    <script>
+        // Conditional Statements
+        //if statement
+    let year2 = prompt('In which year was ECMAScript-2015 specification published?', '');
+
+if (year2 == 2015) console.log(( 'You are right!' ));
+
+        if (year2 == 2015) {
+  console.log(( "That's correct!") );
+  console.log(( "You're so smart!" ));
+}
+// //if-else statement 
+// let year1 = prompt('In which year was the ECMAScript-2015 specification published?', '');
+
+// if (year1 == 2015) {
+//   console.log(( 'You guessed it right!' ));
+// } else {
+//   console.log(( 'How can you be so wrong?' )); // any value except 2015
+// }
+// // else-if statment
+// let year3 = prompt('In which year was the ECMAScript-2015 specification published?', '');
+
+// if (year3 < 2015) {
+//   console.log(( 'Too early...' ));
+// } else if (year3 > 2015) {
+//   console.log(( 'Too late' ));
+// } else {
+//   console.log(( 'Exactly!' ));
+// }
+
+ //switch statement
+    
+ let day;
+    
+    switch (new Date().getDay()) {
+    
+      case 0:
+    
+        day = "Sunday";
+    
+        break;
+    
+      case 1:
+    
+        day = "Monday";
+    
+        break;
+    
+      case 2:
+    
+        day = "Tuesday";
+    
+        break;
+    
+      case 3:
+    
+        day = "Wednesday";
+    
+        break;
+    
+      case 4:
+    
+        day = "Thursday";
+    
+        break;
+    
+      case 5:
+    
+        day = "Friday";
+    
+        break;
+    
+      case  6:
+    
+        day = "Saturday";
+    
+    }
+    
+    console.log((day));
+
+     // ternatity Operator
+     let age= 20;
+    let accessAllowed = (age > 18) ? true : false;
+    console.log(accessAllowed)
+
+    let age1 = prompt('age1?', 18);
+
+let message = (age1 < 3) ? 'Hi, baby!' :
+  (age1 < 18) ? 'Hello!' :
+  (age1 < 100) ? 'Greetings!' :
+  'What an unusual age!';
+
+console.log(( message));
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numeric1</title>
+</head>
+
+<body>
+    <h1 style="text-align:center">Number validation </h1>
+    <form style="text-align:center">
+        <label for="first-name">Number : </label>
+        <input id="number" name="num" type="text"><br><br>
+        
+        <input type="button" value="Submit" onclick="validate()"><br>
+        <span id="message" style="color:red;"></span><br><br>
+    </form>
+    <script>
+        function validate() {
+
+            var a = document.getElementById("number").value
+            if (a =='') {
+                document.getElementById("message").innerHTML = "Please fill number.";
+            }
+            else if (isNaN(a)) {
+                document.getElementById("message").innerHTML = "Only numbers are allowed Please reenter the Number";
+            }
+            else if (!isNaN(a)) {
+                document.getElementById("message").innerHTML = "Enter Value is Numeric Value";
+                document.getElementById("message").style.color = "green";       
+            }
+            else{
+                alert("messaage")
+            }
+        }
+
+    </script>
+</body>
+
+</html>

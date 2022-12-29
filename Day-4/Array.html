@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    //     /* Properties,Methods,Accessor,Constructors,Iterables,Sets,Maps,Reference
+    // // 
+     
+    // 2. JS Events,JS strings,JS numbers, JS arrays,JS dates,Date Formats JS Math*/
+    //     // array
+    //     const marks = [31, 23, 45, 78, 90]
+    //     console.log(marks)
+    //     console.log(marks.length)
+    //     let value = marks.indexOf(23);
+    //     console.log(value)
+    //     marks.pop()
+    //     marks.shift()
+    //     marks.push(456);
+    //     marks.unshift(1009);
+    //     marks.splice(2, 3);
+    //     marks.reverse()
+    //     let marks2 = [45, 23, 45, 99, 100, 678]
+    //     marks.concat(marks2)
+    //     console.log(marks)
+
+    //     const student = {
+    //         name: 'John',
+    //         age: 20,
+    //         marks: {
+    //             science: 70,
+    //             math: 75
+
+    //         }
+    //     }
+    //     const person = {
+    //         name: 'Sam',
+    //         age: 30,
+    //         // using function as a value
+    //         greet: function () { console.log('hello') }
+    //     }
+
+    //     person.greet(); // hello
+    //     // accessing property of student object
+    //     console.log(student.marks); // {science: 70, math: 75}
+
+    //     // accessing property of marks object
+    //     console.log(student.marks.science); // 70
+    //     console.log(student)
+    //     console.log(person.greet())
+
+
+        //object
+        const person1 = {
+            fname: " John",
+            lname: " Doe",
+            age: 25
+        };
+        let txt="";
+
+        for (let x in person1) {
+            txt += person1[x];
+        }
+        console.log(person1)
+        person1.nationality="English";
+        delete person1.age
+
+        //adding method to object
+        person1.name = function () {
+  return this.fname + " " + this.lname;
+ 
+};
+console.log("my father is" + person1.name())
+
+let message = "Hello world!";
+let x = message.toUpperCase();
+console.log(x)
+
+    </script>
+</body>
+
+</html>

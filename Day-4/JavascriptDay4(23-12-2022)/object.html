@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+</head>
+
+<body>
+
+
+
+
+    <h1>javascript day 4 dec 23</h1>
+
+    <p id="demo"> accessor </p>
+
+    <p id="demo2"> accessor </p>
+
+    <p id="demo3"> accessor </p>
+
+    <p id="demo4">stt</p>
+
+    <p id="demo"></p>
+
+    <p id="demo5"></p>
+
+    <script>
+
+
+        //object
+        const person1 = {
+            fname: " John",
+            lname: " Doe",
+            age: 25
+        };
+        let txt = "";
+
+        for (let x in person1) {
+            txt += person1[x];
+        }
+        console.log(person1)
+        person1.nationality = "English";
+        delete person1.age
+
+        //adding method to object
+        person1.name = function () {
+            return this.fname + " " + this.lname;
+
+        };
+        console.log("my father is" + person1.name())
+
+        let message = "Hello world!";
+        let x = message.toUpperCase();
+        console.log(x)
+
+        // create   can use const let var or nothing
+
+        const obj1 = { fname: "jaydeep", lname: "vaghela", age: 25, gender: "male" }
+
+        console.log(obj1);
+
+        console.log(obj1.fname);
+
+        //create 2 by empkty and then ading
+
+        const obj2 = {};
+
+        obj2.fname = "jay";
+
+        obj2.lname = "deep";
+
+        obj2.city = "ahmedabad";
+
+        obj2.mobile = 1991892898;
+
+        console.log(obj2)
+
+
+
+        // create3 by new keyword
+
+        const person = new Object();
+
+        person.fname = "jaydeepe";
+
+        person.lname = "vaghela";
+
+        person.city = "abd";
+
+        person.mobile = 1991892898;
+
+        console.log(person)
+
+        console.log(person["fname"])    // same as person.fname
+
+
+
+        //nested obj till cars  and bike is array of objects
+
+        const nest = {
+
+            name: "object",
+
+            type: "parent object",
+
+            language: "",
+
+            stat: "",
+
+            cars: {
+
+                name1: "car object",
+
+                type1: "nested object",
+
+                name: "trying"
+
+            },
+
+            bike: [
+
+                { bike1: "200cc", typeis: "good" },
+
+                { bike2: "400cc", typeis: "best" },
+
+                { bike3: "300", typeisnew: "better" },
+
+            ],
+
+            fullname: function () {
+
+
+
+                return this.name + "" + this.type
+
+            },
+
+
+            // Accessor
+            get bikecc() {
+
+                return this.bike[0].bike1 + " type of object is " + this.type.toUpperCase()
+
+            },
+
+            set lang(lang) {
+
+                this.language = lang.toUpperCase()
+
+            }, set stat(stat) {
+
+                this.states = stat.toUpperCase()
+
+            }
+
+
+
+        }
+
+        nest.lang = "english";
+
+        nest.stat = "gujarat";
+
+        console.log(nest);
+
+        console.log(nest.cars);
+
+        console.log(nest.cars.name);
+
+        console.log(nest.bike);
+
+        console.log(nest.bike[1]);
+
+        console.log(nest.bike[1].bike1)
+
+
+
+        console.log(nest.fullname())
+        // Display the Object
+
+        document.getElementById("demo").innerHTML = nest.name;
+
+        document.getElementById("demo2").innerHTML = nest.bikecc;
+
+        document.getElementById("demo3").innerHTML = nest.language;
+
+        document.getElementById("demo4").innerHTML = nest.states;
+
+        // Constructor 
+        function Person(first, last, age, eye) {
+            this.firstName = first;
+            this.lastName = last;
+            this.age = age;
+            this.eyeColor = eye;
+            //define the method
+            this.name = function () {
+                return this.firstName + " " + this.lastName;
+            };
+        }
+        //prototype
+        Person.prototype.nationality = "English";
+        //prototype property allows method
+        Person.prototype.name = function () {
+            return this.firstName + " " + this.lastName;
+        };
+        console.log(Person);
+
+// Iterables Over string
+// Create a String
+const name = "W3Schools";
+
+// List all Elements
+let text = ""
+for (const x of name) {
+  text += x + "<br>";
+}
+// Iterables Over Array
+// Create a String
+const name1 = ['car','bike','cycle'];
+
+// List all Elements
+let text1= ""
+for (const x of name1) {
+  text1 += x + "<br>";
+}
+
+document.getElementById("demo").innerHTML = text;
+document.getElementById("demo5").innerHTML = text1;
+
+//Create a Set
+const letters = new Set(["a","b","c"]);
+letters.add("d");
+letters.add("e");
+letters.add("f");
+let text2 = "";
+letters.forEach (function(value) {
+  text += value;
+})
+console.log(letters)
+
+ </script>
+
+</body>
+
+</html>

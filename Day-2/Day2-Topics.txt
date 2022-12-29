@@ -1,0 +1,6 @@
+Forms and Form Elements:
+(Buttons,Label,Option,Datalist,Implementing Select and Optgroup Tags
+Implementing Input and Textarea Tags,Implementing Fieldset and Legend Tags,Implementing Output Tag,Keygen,HTML Audio, Video, and Article Tags),
+HTML Input Types :
+(Text, Radio, Checkbox, Button, Number, Range, Date, Datetime-local, Time, Week, Month
+Telephone, Email, URL, Password, Color, Image, File, Hidden, Search, Reset, Submit)

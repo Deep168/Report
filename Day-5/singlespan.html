@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singlespan</title>
+</head>
+
+<body>
+   
+   
+       
+            
+            <div>
+                <input type="radio" id="contactChoice1" name="contact" value="lang" onclick="displayRadioValue()" />
+                <label for="contactChoice1">PHP</label>
+
+                <input type="radio" id="contactChoice2" name="contact" value="lang" onclick="displayRadioValue()" />
+                <label for="contactChoice2">ASP.Net</label>
+
+                <input type="radio" id="contactChoice3" name="contact" value="lang" onclick="displayRadioValue()" />
+                <label for="contactChoice3">ASP</label>
+
+                <input type="radio" id="contactChoice4" name="contact" value="lang" onclick="displayRadioValue()" />
+                <label for="contactChoice4">PERL</label>
+
+                <input type="radio" id="contactChoice5" name="contact" value="lang" onclick="displayRadioValue()"/>
+                <label for="contactChoice5">JSP</label>
+            </div>
+           
+       
+    
+    <span id="result"></span>
+</body>
+<script>
+function displayRadioValue(){
+    if(document.getElementById("contactChoice1").checked)
+    {
+        document.getElementById("result").innerHTML="selected lang : PHP";
+    }
+    if(document.getElementById("contactChoice2").checked)
+    {
+        document.getElementById("result").innerHTML="selected lang : ASP.Net";
+    }
+    if(document.getElementById("contactChoice3").checked)
+    {
+        document.getElementById("result").innerHTML="selected lang : ASP";
+    }
+    if(document.getElementById("contactChoice4").checked)
+    {
+        document.getElementById("result").innerHTML="selected lang : PERL";
+    }
+    if(document.getElementById("contactChoice5").checked)
+    {
+        document.getElementById("result").innerHTML="selected lang : JSP";
+    }
+}    
+   
+</script>
+
+</html>

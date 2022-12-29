@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkboxes</title>
+</head>
+
+<body>
+
+
+
+    <div>
+        <span>
+            <input type="checkbox" id="contactChoice1" name="name" onclick="checkall()" />
+            <label for="contactChoice1">Checkall</label><br>
+        </span>
+        <span>
+            <input type="checkbox" id="contactChoice6" name="contact" onclick="checkChange()" />
+            <label for="contactChoice6">USA</label><br>
+        </span>
+        <span>
+            <input type="checkbox" id="contactChoice2" name="contact" onclick="checkChange()" />
+            <label for="contactChoice2">UK</label><br>
+        </span>
+        <span>
+            <input type="checkbox" id="contactChoice3" name="contact" onclick="checkChange()" />
+            <label for="contactChoice3">INDIA</label><br>
+        </span>
+        <span>
+            <input type="checkbox" id="contactChoice4" name="contact" onclick="checkChange()" />
+            <label for="contactChoice4">Australia</label><br>
+        </span>
+
+        <span>
+            <input type="checkbox" id="contactChoice5" name="contact"  onclick="checkChange()"/>
+            <label for="contactChoice5">London</label><br>
+        </span>
+    </div>
+   
+
+
+
+
+</body>
+<script>
+   function checkall() {
+
+var selectall = document.getElementById('contactChoice1');
+
+if (selectall.checked == true) {
+
+  var checkboxes = document.getElementsByName("contact");
+
+  for (var i = 0, n = checkboxes.length; i < n; i++) {
+
+    checkboxes[i].checked = true;
+
+  }
+
+} else {
+
+  var checkboxes = document.getElementsByName("contact");
+
+  for (var i = 0, n = checkboxes.length; i < n; i++) {
+
+    checkboxes[i].checked = false;
+
+  }
+
+}
+
+}
+
+function checkChange() {
+
+
+
+let Checkbox = document.querySelectorAll('input[name="contact"]').length;
+
+let Checked = document.querySelectorAll('input[name="contact"]:checked').length;
+
+
+
+// When total options equals to total checked option
+
+if (Checkbox == Checked) {
+
+  document.getElementsByName("name")[0].checked = true;
+
+} else {
+
+  document.getElementsByName("name")[0].checked = false;
+
+}
+
+}
+</script>
+
+</html>

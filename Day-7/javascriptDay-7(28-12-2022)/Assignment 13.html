@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 13</title>
+</head>
+<body>
+    <p id="p"></p>
+    <button  name="Add a Contact" id="b1" onclick=" return Generatextbox()">Add a Contact</button>
+    <script>
+         function Generatextbox(){
+            var a1 = document.createElement('input');
+            a1.type="text";
+            a1.id="p1";
+            var a2 = document.createElement('button');
+            a2.innerText="X";
+            a2.id="p2";
+            a2.onclick=removetextbox
+            document.getElementById("p").appendChild(a1)
+            document.getElementById("p").appendChild(a2)
+
+         }
+        function removetextbox()
+        {
+          this.previousElementSibling.remove()
+          this.remove()
+        }
+    </script>
+</body>
+</html>

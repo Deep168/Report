@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Assignment2</title>
+
+</head>
+
+<body>
+    <div style="display:flex; justify-content: space-between; background-color: rgb(241, 240, 237); padding: 1.2px;">
+
+        <h1>Client Name</h1>
+
+        <img src="logo.jpg" />
+
+    </div>
+
+    <div style="background-color:gray;padding: 05;">
+
+    </div>
+    <div style="background-color: rgb(241, 240, 237); padding: 5px;">
+
+        <nav>
+
+            <div style="display:flex; justify-content: space-between; ">
+
+                <div><img src="bullets3.gif" /> <a href="/html/">Home</a> </div>
+
+                <div><img src="bullets3.gif" /> <a href="/css/">About us</a></div>
+
+                <div><img src="bullets3.gif" /> <a href="/js/">Shower</a></div>
+
+                <div><img src="bullets3.gif" /> <a href="/jquery/">Product2</a></div>
+
+                <div><img src="bullets3.gif" /> <a href="/jquery/">Contact us</a></div>
+
+            </div>
+
+        </nav>
+
+    </div>
+    <img src="flashstrip.jpg" / width="100%">
+
+    </div>
+
+    <div style="background-color: rgb(212, 212, 212);padding: 07;">
+
+    </div>
+    <aside style="width: 28%;
+
+    height:500%;
+
+    float: left;
+
+    background-color: rgb(163, 161, 161);">
+
+        <br>
+
+    </aside>
+    <aside style="width: 20%;
+
+   
+
+    height:20%;
+
+    float: right;">
+
+        <div>
+
+            <h3 style="background-color: rgb(182, 179, 179); padding: 10px;">News</h3>
+
+            <p>News text will be here News text will be here News text will be here News text will be here News text
+
+                will be here News text will be here</p>
+
+        </div>
+
+    </aside>
+    <aside style="width: 20%;
+
+   
+
+    height:20%;
+
+    float: right;">
+
+        <div>
+
+            <h3 style="background-color: rgb(182, 179, 179); padding: 10px;">Events</h3>
+
+            <p>Events text will be here<br> 
+               News text will be here<br>  
+               News text will be here<br> 
+               News text will be here<br> 
+               News text will be here</p>
+
+        </div>
+
+    </aside>
+    </body>
+    </html>

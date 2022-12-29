@@ -1,0 +1,188 @@
+<html>
+<head>
+
+    <title>Assignment 8</title>
+
+</head>
+
+
+
+<body>
+
+    <center>
+
+        <div style="margin: 10%;">
+
+            <h1>Assignment 8</h1>
+
+            <h2> Enter date (MM-DD-YYYY) formate :-</h2>
+
+            <input type="text" id="date" name="date" placeholder="MM-DD-YYYY" />
+
+            <button onclick="validatedate()">Check</button>
+
+            <p id="message"></p>
+
+        </div>
+
+
+
+        <script>
+
+            const validatedate = () => {
+
+                const data = document.getElementById("date").value;
+
+               
+
+                let dateArray = data.split("-");
+
+               
+
+                let errorMessage = "";
+
+                if (dateArray.length != 3) {
+
+                    errorMessage = "Please enter date in 'MM-DD-YYYY' format";
+
+                } else if ("01" > dateArray[0] || dateArray[0] > "12") {
+
+                    errorMessage =
+
+                        "Invalid month. Month should be within the range 1 to 12";
+
+                } else if (isNaN(dateArray[2])) {
+
+                    errorMessage = "Invalid Year. Year should be a number";
+
+                } else if (isNaN(dateArray[1])) {
+
+                    errorMessage = "Invalid Date. Date Should be a number";
+
+                } else {
+
+                    const year = dateArray[2];
+
+                    const month = dateArray[0];
+
+                    const date = dateArray[1];
+
+                    let leapYear = false;
+
+                    if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+
+                        leapYear = true;
+
+                    }
+
+
+
+                    if (
+
+                        month == 1 ||
+
+                        month == 3 ||
+
+                        month == 5 ||
+
+                        month == 7 ||
+
+                        month == 8 ||
+
+                        month == 10 ||
+
+                        month == 12
+
+                    ) {
+
+                        if (!(1 <= date && date <= 31)) {
+
+                            errorMessage =
+
+                                "Invalid day. Day should be within the range 1 to 31";
+
+                        }
+
+                    } else if (month == 4 || month == 6 || month == 9 || month == 11) {
+
+                        if (!(1 <= date && date <= 30)) {
+
+                            errorMessage =
+
+                                "Invalid day. Day should be within the range 1 to 30";
+
+                        }
+
+                    } else if (month == 2) {
+
+                       
+
+                        if (leapYear) {
+
+                            if (!(1 <= date && date <= 29)) {
+
+                                errorMessage =
+
+                                    "Invalid day. Day should be within the range 1 to 29";
+
+                            }
+
+                        } else {
+
+                            if (!(1 <= date && date <= 28)) {
+
+                                errorMessage =
+
+                                    "Invalid day. Day should be within the range 1 to 28";
+
+                            }
+
+                        }
+
+                    }
+
+
+
+                    var currdate = new Date(data);
+
+                   
+
+                    if (!isNaN(currdate.getTime()) && errorMessage == "") {
+
+                        console.log("true");
+
+                        document.getElementById("message").innerHTML = `You have entered valid date. Its "${data}". Thank you.`;
+
+                        document.getElementById("message").style.color = "green";
+
+                    } else {
+
+                        console.log("elese")
+
+                        if (errorMessage == "") {
+
+                            errorMessage = "Please enter date in 'MM-DD-YYYY' format";
+
+                        }
+
+
+
+                        document.getElementById("message").innerHTML = errorMessage;
+
+                        document.getElementById("message").style.color = "red";
+
+                    }
+
+                }
+
+            };
+
+        </script>
+
+    </center>
+
+</body>
+
+
+
+</html>

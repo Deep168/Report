@@ -1,0 +1,123 @@
+<html>
+
+<head>
+    <title>
+        Javascript Day-1
+    </title>
+</head>
+
+<body>
+    <h1>
+        Welcomw to javascript Day-1
+    </h1>
+    <script>
+        //alert('hello world');
+        //[3 + 1 + 2].forEach(alert);
+
+        // Variables
+        for (let a = 10; a < 13; a++) {
+            console.log(a)
+        }
+        var a = 2;
+        const b = 2;
+        let c = 2;
+
+        console.log(a, b, c)
+        var message = "hello sir";
+        console.log(message)
+
+        let hello = 'Hello world!';
+
+        let message1;
+
+        // copy 'Hello world' from hello into message
+        message1 = hello;
+        console.log(message1)
+
+        const myBirthday = '18.04.1982';
+        console.log(myBirthday)
+
+
+        console.log("Task 1 ")
+        var admin;
+        var name;
+        name = "John";
+        admin = name;
+        //console.log(alert(admin))
+
+
+        // Data types
+        //NUMBERS
+        let message2 = "hello";
+        message2 = 123456;
+        console.log(message2)
+
+        let n = 123;
+        n = 12.345;
+        console.log(n)
+
+        //console.log(alert( 1 / 0 ));
+
+        //console.log(alert(NaN + 1)); // NaN
+        //[3 * NaN].forEach(alert)
+
+        //Bigint
+        console.log(9007199254740991 + 1); // 9007199254740992
+
+        const bigInt = 1234567890123456789012345678901234567890n;
+        console.log(bigInt)
+      
+        //String
+
+        let name1 = "John";
+
+        // embed a variable
+        //console.log(alert(`Hello, ${name1}!`)); // Hello, John!
+
+        // embed an expression
+        //console.log(alert(`the result is ${1 + 2}`)); // the result is 3
+       
+        //Booolean 
+        let nameFieldChecked = true; // yes, name field is checked
+let ageFieldChecked = false; // no, age field is not checked
+
+console.log(nameFieldChecked)
+console.log(ageFieldChecked)
+let isGreater = 4 > 1;
+
+//console.log(alert( isGreater) );
+
+//Null
+let age = null;
+console.log(age)
+  
+
+//undefined
+let age1;
+
+//console.log(alert(age1)); 
+
+//type of operator
+
+typeof undefined // "undefined"
+
+typeof 0 // "number"
+
+typeof 10n // "bigint"
+
+typeof true // "boolean"
+
+typeof "foo" // "string"
+
+typeof Symbol("id") // "symbol"
+
+typeof Math // "object"  (1)
+
+typeof null // "object"  (2)
+
+typeof alert // "function"  (3)
+    
+    </script>
+</body>
+
+</html>

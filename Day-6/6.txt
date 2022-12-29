@@ -1,0 +1,82 @@
+) math.htm
+    Requirement :
+
+ 
+
+        - Create an application for performing basic math operations like Addition, Subtraction,
+          Multiplication and Division.
+
+ 
+
+        - Consider following elements :
+        (i) Label : "Please enter first number : " with Text Box
+        (ii) Label : "Please enter second number : " with Text Box
+        (iii) Label : "Please select operation you want to perform : "
+
+ 
+
+        with set of Radio Buttons like "Addition", "Subtraction", "Multiplication" and "Division"
+        presented in vertical manner.
+
+ 
+
+        (iv) Two buttons, viz, "Calculate" and "Reset"
+        (v) Label : "Result is : " with final result
+
+ 
+
+        - Place all the checks to make sure that user enters only numeric values for text boxes.
+          Also, make sure that user selects the operation radio button before clicking on the
+          "Calculate" button.
+
+ 
+
+        - Clicking on "Calculate" button will perform the requested operation and
+          the result will be displayed below "Calculate" and "Reset" buttons in the form of text,
+          e.g. : "Result is : 10".
+
+ 
+
+        - Clicking on "Reset" button will reset all the form information including radio button
+          selection and result text.
+            
+        - Error messages :
+            - Please enter first number or Please enter second number
+            - Please enter only numeric value for first number or Please enter only numeric
+              value for second number
+            - Please select the operation you want to perform
+
+ 
+
+NOTE :- Validation flow will be top to bottom.
+
+ 
+
+10) popup1.htm and popup2.htm
+    Requirement :
+        - Create 2 HTML pages, viz. popup1.htm and popup2.htm.
+
+ 
+
+        - popup1.htm will have text "Please click here in order to read our Terms and Conditions"
+          and a button "Read".
+
+ 
+
+          When user clicks on "Read" button,
+          open a pop-up window (popup2.htm).
+        
+        This newly opened "popup2.htm" window will have following features :
+            - It will be opened at 100, 100 position of existing window.
+            - It will not be allowed to resize.
+            - It will be of height 200 and width 400.
+            - It will not contain toolbar.
+            - It will not contain address bar.
+
+ 
+
+        - Pop-up window "popup2.htm" will have following information :
+    
+            - Static text "Welcome and please agree with our Terms and Conditions"
+              and a "Close" button. When user clicks on "Close" button.
+               "popup2.htm" should be closed.

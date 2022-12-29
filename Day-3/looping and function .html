@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     
+
+
+    //while loop
+    
+    let text = "";
+    
+    let i = 0;
+    
+    while (i < 10) {
+    
+      text += "The number is " + i + "\n";
+    
+      i++;
+    
+    }
+    
+    console.log((text));
+    
+    
+    
+    //do while loop
+    
+    let text1 = "";
+    
+    let i1 = 0;
+    
+    do {
+    
+      text1 += i1 + "\n";
+    
+      i1++;
+    
+    }
+    
+    while (i1 < 5);
+    
+    console.log((text1));
+    
+    
+    
+    //for loop
+    
+    var text2 = "";
+    var cars=["BMW",  "Volvo", "Mini"];
+    
+    for (var i2 = 0; i2 < cars.length; i2++) {
+    
+      text2 += cars[i2] + "<br>";
+    
+    }
+    
+    console.log((text2));
+    
+    
+    
+    //for in loop
+    
+    const person = {fname:"John", lname:"Doe", age:25};
+    
+    let txt = "";
+    
+    for (let x in person) {
+    
+      txt += person[x] + " ";
+    
+    }
+    
+    console.log((txt));
+    
+    
+    
+    //for of loop
+    
+    const cars = ["BMW", "Volvo", "Mini"];
+    
+    let text3 = "";
+    
+    for (let x of cars) {
+    
+      text3 += x + "<br>";
+    
+    }
+    
+    console.log((text3));
+    
+    
+    
+    
+   
+    
+    
+    
+   //function
+    
+    function myFunction(p1, p2) {
+    
+        return p1 * p2;
+    
+      }
+    
+      console.log((myFunction(4,3)));
+    
+    
+    
+    function myFunction(a, b) {
+    
+        return a * b;
+    
+      }
+    
+    let x = myFunction(5, 3);
+    
+    console.lg((x));
+    
+    
+    
+    function toCelsius(f) {
+    
+        return (5/9) * (f-32);
+    
+    }
+    
+    console.log((toCelsius(77)));
+    
+    
+    
+    //local variable
+    
+    myFunction();
+    
+    function myFunction() {
+    
+      let carName = "Volvo";
+    
+      console.log((typeof carName));
+    
+    }
+    
+    console.log((typeof carName));
+    let hello = "";
+
+hello = () => {
+  return "Hello World!";
+}
+alert(hello)
+    </script>
+</body>
+</html>
