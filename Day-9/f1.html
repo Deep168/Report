@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div><button onclick="openPrompt()">Start Game</button>
+        <p id="message"></p>
+        <h1 id="score"></h1>
+    </div>
+    <div><button onclick="func1()">Reset</button>
+        <p id="R1"></p>
+    </div>
+    <script>
+
+        let promptisopen = false;
+        let number = null;
+        let num = parseInt(Math.random() * 10);
+        let score = 100;
+        const openPrompt = () => {
+            if (!promptisopen) {
+                number = prompt("enter 0 to 100");
+                promptisopen = true;
+                console.log(number);
+            }
+            if (number != '') {
+                score--;
+                console.log("score : ", score)
+                document.getElementById("score").innerHTML = `Your score is : ${score}`
+                if (num == number) {
+                    console.log("number is match");
+                } else {
+                    promptisopen = false;
+
+                    if (number > num) {
+                        alert("enter a small number");
+                        console.log("enter a small number");
+                    } else {
+                        alert("enter big number")
+                        console.log("enter big number");
+                    }
+                    number = '';
+                    openPrompt();
+                }
+            } else {
+                console.log("please enter number between 0 to 100");
+                number = null;
+                openPrompt();
+            }
+        }
+        function func1() {
+        
+            document.getElementById("score").innerHTML = "";
+            document.getElementById('number').value = "";
+            num = parseInt(Math.random() * 100);
+            score = 100;
+            
+        }
+
+    </script>
+</body>
+
+</html>
