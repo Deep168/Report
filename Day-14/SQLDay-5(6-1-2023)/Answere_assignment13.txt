@@ -1,0 +1,285 @@
+=========================================================================================
+DATABASE :
+=========================================================================================
+
+Assume a hypothetical company that manages multiple automobile dealerships throughout INDIA.
+
+Following are the data requirements of our company :
+
+* A "car" is described by a vehicle identification number (VIN), make (e.g., Toyota), model (e.g., Prius), year, mileage, and two prices: the asking price (how much the dealership would like to sell the car for) and the invoice price (how much the dealership paid for the car). This information is maintained for every car currently in any dealership's inventory, and also for every car that has ever been sold by one of the dealerships. 
+
+* A dealership is a single location where the company sells cars. The company manages many dealerships, each one being described by a unique dealership ID, a name (e.g., Honda Sales, Yamaha World, Concept Hyundai etc.), street address, city, and state.
+
+* The company employs a number of salespeople. Each salesperson is assigned a unique salesperson ID. 
+
+* Salespeople work at one or more dealerships each month, and are paid a monthly base salary at each, regardless of how many cars they sell. Additionally, they are paid a commission on each car they sell. 
+
+* Information is maintained about all salespeople who ever worked for any dealership.
+
+* The following information is kept about each customer : ID, name, street address, city, and state.
+
+* Salespeople are arranged in a strict hierarchy, with each salesperson reporting to a "managing salesperson."
+
+* It is necessary to keep track of the inventory of cars currently available at each dealership. Of course, a particular car can only be in the inventory of one dealership at any given time.
+
+* A long-term record of all car sales is maintained. For each sale, the company tracks which car was bought, which customer bought it, which salesperson sold it, which dealership it was sold by, at which price it was sold for, and on which date it was sold.
+
+   i. car (recid, vin, make, model, year, mileage, askprice, invoiceprice)
+  ii. dealership (recid, name, address, city, state)
+ iii. salesperson (recid, name)
+  iv. customer (recid, name, address, city, state)
+   v. reportsto (recid, salespersonid, managingsalespersonid)
+  vi. worksat (recid, salespersonid, dealershipid, monthworked, basesalaryformonth)
+ vii. inventory (recid, vin, dealershipid)
+viii. sale (recid, vin, customerid, salespersonid, dealershipid, saleprice, saledate)
+
+Ans
+create table deepcar
+(
+recid int(5) primary key auto_increment,
+vin numeric(5) not null,
+make varchar(20) not null,
+model varchar(20) not null,
+year numeric(4) not null,
+mileage numeric(2) not null,
+askprice numeric(7) not null,
+invoiceprice numeric(7) not null
+);
+***************************************************************************************
+create table dealership_a13(recid int primary key,
+name varchar(20),
+address varchar(20),
+ city varchar(20),
+  state varchar(20));
+***************************************************************************************
+create table salesperson_a13  (recid int  primary key, name varchar(20)  );
+select * from salesperson_a13;
+
+***************************************************************************************
+create table customer_a13 (recid int primary key, name varchar(20), address varchar(20), city varchar(20), state varchar(20));
+
+***************************************************************************************
+create table reportsto_a13 (recid int primary key, salespersonid int , managingsalespersonid int,
+ foreign key (salespersonid) references salesperson_a13(recid),
+ foreign key(managingsalespersonid)references salesperson_a13(recid));
+
+***************************************************************************************
+create table worksat_a13 (recid int primary key, salespersonid int , dealershipid int, monthworked int, basesalaryformonth int,
+  foreign key (salespersonid) references salesperson_a13(recid),
+  foreign key (dealershipid) references dealership_a13(recid)
+   );
+***************************************************************************************
+create table inventory_a13 (recid int primary key, vin int , dealershipid int,
+foreign key (dealershipid) references dealership_a13(recid));
+***************************************************************************************
+create table sale (recid int primary key, vin int, customerid int, salespersonid int , dealershipid int,
+ saleprice int, saledate date,
+ foreign key (customerid) references customer_a13(recid),
+ foreign key (salespersonid) references salesperson_a13(recid),
+  foreign key (dealershipid) references dealership_a13(recid));
+***************************************************************************************
+Ans
+insert into deepcar (recid,vin,make,model,year,mileage,askprice,invoiceprice) values
+(1,1000,'tata moters','Tata Nexon','2022',20,770000,500000),
+(2,1002,'tata moters','Tata Harrier','2021',15,1700000,1500000),
+(3,1003,'Mahindra','Mahindra Thar','2022',18,1200000,1000000),
+(4,1004,'Mahindra','Mahindra XUV700','2019',30,2000000,1800000),
+(5,1005,'Mahindra','Mahindra Bolero.','2020',10,2500000,2200000);
+***************************************************************************************
+insert into dealership_a13(recid,name, address, city, state) values
+(1,'Tata moters dealer 1','sola road','ahmedabad','gujrat'),
+(2,'Tata moters dealer 2','iscon road','ahmedabad','gujrat'),
+(3,'Mahindra dealer 1','kargil road','ahmedabad','gujrat'),
+(4,'Mahindra dealer 2','damru circle road','ahmedabad','gujrat');
+***************************************************************************************
+insert into salesperson_a13(recid,name) values
+(1,'name1'),(2,'name2'),(3,'name3'),(4,'name4'),(5,'name5'),(6,'name6'),(7,'name7'),(8,'name8');
+***************************************************************************************
+
+insert into customer_a13(recid,name, address, city, state) values
+(1,'customer1','area1 sector1','ahmedabad','gujarat'),
+(2,'customer2','area2 sector2','ahmedabad','gujarat'),
+(3,'customer3','area3 sector3','ahmedabad','gujarat'),
+(4,'customer4','area4 sector4','ahmedabad','gujarat'),
+(5,'customer5','area5 sector5','ahmedabad','gujarat'),
+(6,'customer6','area6 sector6','ahmedabad','gujarat'),
+(7,'customer7','area7 sector7','ahmedabad','gujarat'),
+(8,'customer8','area8 sector8','ahmedabad','gujarat'),
+(9,'customer9','area9 sector9','ahmedabad','gujarat'),
+(10,'customer10','area10 sector10','ahmedabad','gujarat');
+
+
+***************************************************************************************
+insert into reportsto_a13 (recid,salespersonid, managingsalespersonid) values
+(1,1,3),
+(2,2,3),
+(3,4,6),
+(4,5,6),
+(5,7,9),
+(6,8,9),
+(7,10,12),
+(8,11,12);
+
+***************************************************************************************
+insert into worksat_a13  (recid,salespersonid, dealershipid, monthworked, basesalaryformonth) values
+(1,1,1,4,60000),
+(2,2,1,5,61000),
+(3,3,1,8,70000),
+(4,4,2,4,50000),
+(5,5,2,5,51000),
+(6,6,2,8,60000),
+(7,7,3,4,40000),
+(8,8,3,5,41000),
+(9,9,3,8,50000),
+(10,10,4,4,30000),
+(11,11,4,5,31000),
+(12,12,4,8,40000);
+***************************************************************************************
+
+insert into inventory_a13( recid,vin, dealershipid) values
+(1,1000,1),(2,1001,1),(3,1002,1),(4,1002,1),(5,1002,1),
+(6,1000,2),(7,1001,2),(8,1001,2),(9,1002,2),(10,1002,2),
+(11,1003,3),(12,1003,3),(13,1003,3),(14,1004,3),(15,1004,3),
+(16,1003,4),(17,1003,4),(18,1004,4),(19,1004,4),(20,1004,4);
+
+***************************************************************************************
+insert into sale_a13
+(recid,vin, customerid, salespersonid, dealershipid, saleprice, saledate) values
+(1,1001,1,1,1,770000,'2022-12-31'),
+(2,1001,2,2,1,770000,'2022-12-01'),
+(3,1002,3,1,1,1700000,'2022-11-30'),
+(4,1002,4,4,2,1700000,'2022-11-01'),
+(5,1001,5,5,2,770000,'2022-10-13'),
+(6,1003,6,7,3,1200000,'2022-12-22'),
+(7,1003,7,10,4,1200000,'2022-12-31'),
+(8,1004,8,7,3,2000000,'2022-01-01'),
+(9,1004,9,10,4,2000000,'2022-01-03'),
+(10,1004,10,9,4,2000000,'2022-01-13');
+
+***************************************************************************************
+
+=========================================================================================
+QUERIES :
+=========================================================================================
+
+
+1. Find the names of all salespeople who have ever worked for the company at any dealership.
+Ans
+select sale.name from salesperson_a13 as sale inner join worksat_a13 as work
+   on sale.recid=work.salespersonid inner join dealership_a13 as deal
+   on work.dealershipid=deal.recid;
+
+***************************************************************************************
+2. List the Name, Street Address, and City of each customer who lives in Ahmedabad.
+Ans
+select name, address, city from customer_a13 where city='Ahmedabad';
+
+***************************************************************************************
+3. List the VIN, make, model, year, and mileage of all cars in the inventory of the dealership named "Hero Honda Car World".
+Ans
+select car.vin, make, model, year, mileage from deepcar as car inner join inventory_a13 as inv
+   on car.vin=inv.vin inner join dealership_a13 as deal
+   on inv.dealershipid=deal.recid where deal.name=" Tata moters dealer 1";
+***************************************************************************************
+4. List names of all customers who have ever bought cars from the dealership named "Concept Hyundai".
+Ans
+select cus.name, deal.name from customer_a13 as cus inner join sale_a13 as sa
+   on cus.recid=sa.customerid inner join dealership_a13 as deal
+   on sa.dealershipid=deal.recid where deal.name='Tata moters dealer 1';
+select * from dealership_a13
+
+***************************************************************************************
+5. For each car in the inventory of any dealership, list the VIN, make, model, and year of the car, along with the name, city, and state of the dealership whose inventory contains the car.
+Ans
+select ca.vin, ca.make,ca.model,ca.year,de.name,de.city,de.state
+   from deepcar as ca inner join inventory_a13 as inv
+   on ca.vin=inv.vin inner join dealership_a13 as de
+   on inv.dealershipid=de.recid;
+***************************************************************************************
+
+6. Find the names of all salespeople who are managed by a salesperson named "Adam Smith".
+Ans
+select sa.name from salesperson_a13 as sa inner join reportsto_a13 as re
+   on sa.recid=re.salespersonid where re.managingsalespersonid=6;
+
+***************************************************************************************
+7. Find the names of all salespeople who do not have a manager.
+Ans
+select sa.name from salesperson_a13 as sa inner join reportsto_a13 as re
+   on sa.recid=re.salespersonid where re.managingsalespersonid=0;
+select * from reportsto_a13;
+
+***************************************************************************************
+8. Find the total number of dealerships.
+Ans
+select count(recid) from dealership_a13;
+
+***************************************************************************************
+9. List the VIN, year, and mileage of all "Toyota Camrys" in the inventory of the dealership named "Toyota Performance". (Note that a "Toyota Camry" is indicated by the make being "Toyota" and the model being "Camry".)
+Ans
+select ca.vin,ca.year,ca.mileage
+   from deepcar as ca inner join inventory_a13 as inv
+   on ca.vin=inv.vin inner join dealership_a13 as de
+   on inv.dealershipid=de.recid where ca.make='tata moters' and ca.model='Tata Nexon'
+   and de.name='Tata moters dealer 1';
+select * from dealership_a13;
+
+***************************************************************************************
+10. Find the name of all customers who bought a car at a dealership located in a state other than the state in which they live.
+Ans
+select cus.name from customer_a13 as cus inner join sale_a13 as sa
+    on cus.recid=sa.customerid inner join dealership_a13 as deal
+    on sa.dealershipid=deal.recid where cus.state != deal.state;
+
+***************************************************************************************
+11. Find the name of the salesperson that made the largest base salary working at the dealership named "Ferrari Sales" during January 2007.
+Ans
+select sa.name from salesperson_a13 as sa inner join worksat_a13 as sale
+    on sa.recid=sale.salespersonid inner join dealership_a13 as deal
+    on sale.dealershipid=deal.recid where deal.name='Tata moters dealer 1'
+    and basesalaryformonth in (select max(basesalaryformonth) from worksat_a13);
+***************************************************************************************
+
+12. Find the salesperson ID and name of all salespeople who have worked at each one of the company's dealerships at some point in time.
+
+***************************************************************************************
+
+13. List the name, street address, city, and state of any customer who has bought more than two cars from all dealerships combined since January 1, 2007.
+Ans
+ select name,address,city, state, count(sale.customerid) from customer_a13 as cus inner join sale_a13 as sale
+    where cus.recid=sale.customerid
+    group by sale.customerid
+    having count(sale.customerid)>=1;
+
+***************************************************************************************
+14. List the name, salesperson ID, and total sales amount for each salesperson who has ever sold at least one car. The total sales amount for a salesperson is the sum of the sale prices of all cars ever sold by that salesperson.
+Ans
+select sa.name,sale.salespersonid,sum(sale.saleprice) as Total_price from salesperson_a13 as sa inner join sale_a13 as sale
+
+***************************************************************************************
+15. Find the names of all customers who bought cars during 2007 who were also salespeople during 2007. For the purpose of this query, assume that no two people have the same name.
+Ans
+select c.name from customer_a13 as  c,sale_a13 as s ,salesperson_a13 as sp
+    where s.customerid = c.recid and sp.recid=s.salespersonid
+    and s.saledate between '2022-01-01' and '2022-12-31'
+    group by c.name;
+
+***************************************************************************************
+16. Find the name and salesperson ID of the salesperson who sold the most cars for the company at dealerships located in Gujarat between March 1, 2007 and March 31, 2007.
+
+
+***************************************************************************************
+17. Calculate the payroll for the month of March 2007.
+	* The payroll consists of the name, salesperson ID, and gross pay for each salesperson who worked that month.
+        * The gross pay is calculated as the base salary at each dealership employing the salesperson that month, along with the total commission for the salesperson that month.
+        * The total commission for a salesperson in a month is calculated as 5% of the profit made on all cars sold by the salesperson that month.
+        * The profit made on a car is the difference between the sale price and the invoice price of the car. (Assume, that cars are never sold for less than the invoice price.)
+Ans
+
+Select sa.name,sale.salespersonid,sale.saledate, (((sale.saleprice-car.invoiceprice)*5)/100) + wor.basesalaryformonth as Gross_Pay
+    from deepcar as car inner join sale_a13 as sale
+    on car.vin=sale.vin inner join salesperson_a13 as sa
+    on sa.recid=sale.salespersonid inner join worksat_a13 as wor
+    on sale.dealershipid=wor.dealershipid where sale.saledate>'2022-01-01' and sale.saledate<'2023-01-01';
+select * from sale_a13;
+***************************************************************************************

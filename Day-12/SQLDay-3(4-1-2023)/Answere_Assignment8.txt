@@ -1,0 +1,87 @@
+Q-1	I want to add 3 days to the current date. Write all possible queries to perform this operation. Explain each one of them.
+Ans
+SELECT ADDDATE(curdate(), 3) AS DateAdd;
+    2.  SELECT DATE_ADD(curdate(), INTERVAL 3 DAY);
+***************************************************************************************
+Q-2	I want to add 3 years to the current date. Write all possible queries to perform this operation. Explain each one of them.
+Ans
+SELECT DATE_ADD(curdate(), INTERVAL 3 YEAR);
+***************************************************************************************
+Q-3	I want to add 3 months to the current date. Write all possible queries to perform this operation. Explain each one of them.
+Ans
+SELECT DATE_ADD(curdate(), INTERVAL 3 MONTH);
+***************************************************************************************
+Q-4	I want to deduct 2 days from the current date.  Write all possible queries to perform this operation. Explain each one of them.
+Ans
+SELECT ADDDATE(curdate(),-2) As DateDeduct;
+***************************************************************************************
+Q-5	Write a query to add 5 days and 15 hours to date and time "2007-01-26 12:30:45".
+Ans
+SELECT ADDTIME("2007-01-26 12:30:45", "5 15");
+***************************************************************************************
+Q-6	Write all possible queries which will return current date.
+Ans
+SELECT curdate();
+select now();
+***************************************************************************************
+Q-7	Write all possible queries which will return current time.
+Ans
+SELECT curtime();
+select now();
+***************************************************************************************
+Q-8	Input Date is "2007-01-26 12:30:45". Write queries to output following date formats:
+
+	- "January 26, 2007"  =>  SELECT DATE_FORMAT("2007-01-26 12:30:45", "%M %d %Y");
+
+	- "The 26th of January"=>  SELECT DATE_FORMAT("2007-01-26 12:30:45", " The %dth of  %Y");
+
+	- 2007 => SELECT DATE_FORMAT("2007-01-26 12:30:45", " %Y");
+
+	- 07 => SELECT DATE_FORMAT("2007-01-26 12:30:45", " %y");
+
+	- 26/1/7 => SELECT DATE_FORMAT("2007-01-26 12:30:45", " %d/%c/%y");
+
+	- 26/01/07 => SELECT DATE_FORMAT("2007-01-26 12:30:45", " %d/%m/%y");
+
+	- 26/01/2007 => SELECT DATE_FORMAT("2007-01-26 12:30:45", " %d/%m/%Y");
+
+	- 01/26/07  => SELECT DATE_FORMAT("2007-01-26 12:30:45", " %m/%d/%y");
+
+	- 26/01/07 12:30:45 => SELECT DATE_FORMAT("2007-01-26 12:30:45", " %d/%m/%y  %H.%i.%s ");
+
+	- 26/01/07 12:30:45 PM => SELECT DATE_FORMAT("2007-01-26 12:30:45", " %d/%m/%y  %H.%i.%s  PM");
+***************************************************************************************
+Q-9	Input Date is "2007-01-26 12:30:45". Write queries to output following date formats:
+
+	- Friday
+	- 26 (Explanation: 26th day of the month)// returns Days of Month
+	- 6 (Explanation: 6th day of the week)// Returns the Day of the week
+	- 26 (Explanation: 26th day of the year)// Return the Day of the Year
+Ans
+SELECT DAYNAME(2007-01-26 12:30:45');
+SELECT DAYOFMONTH('2007-01-26 12:30:45');
+SELECT DAYOFWEEK('2007-01-26 12:30:45');
+SELECT DAYOFYEAR('2007-01-26 12:30:45');
+***************************************************************************************
+Q-10	Explain UNIX_TIMESTAMP and FROM_UNIXTIME functions with examples.
+Ans
+ select UNIX_TIMESTAMP('2007-01-26');
+SELECT FROM_UNIXTIME(1169749800);
+***************************************************************************************
+Q-11	Write the output of the following query and explain it.
+
+	SELECT PERIOD_ADD(200601, 3);
+Ans
+200604
+***************************************************************************************
+Q-12	Write the output of the following query and explain it.
+
+	SELECT PERIOD_DIFF(200601, 200609);
+Ans
+ -8
+***************************************************************************************
+Q-13	Explain the use of "LAST_INSERT_ID()" function in real life applications.
+SELECT LAST_INSERT_ID();
+Ans 
+0
+***************************************************************************************

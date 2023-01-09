@@ -1,0 +1,71 @@
+Tables used:
+===========
+1) product (recid, mfrid, description, price, qtyonhand)
+
+2) orders (recid, customerid, orderdate, salesrepsid, productid, qty, amount)
+
+3) customer (recid, company, salesrepsid, creditlimit)
+
+4) salesreps (recid, name, officeid, designation, hiredate, manager, quota, sales, age)
+
+5) office (recid, city, region, manager, targetsales, actualsales)
+
+
+Write queries for following requirements:
+
+
+Q-1	List all the orders which are over Rs.25,000/- including the name of the sales person 	who has taken the order and the name of the customer who has placed that order.
+Ans
+select name, company, amount from customer_a11 as cus inner join order_a11 as ord
+        on ord.customerid=cus.recid inner join salesrep_a11 as sale
+        on cus.salesrepsid=sale.recid
+        where ord.amount>4000;
+***************************************************************************************
+Q-2	List out total different customers served by each sales person.
+Ans
+select company, name, amount from customer_a11 as cus inner join order_a11 as ord
+        on ord.customerid=cus.recid inner join salesrep_a11 as sale
+        on cus.salesrepsid=sale.recid
+        group by company
+        order by company, name;
+***************************************************************************************
+Q-3	Calculate total order for each customer of each sales person, sorted by customer and 	within each customer by sales person.
+Ans
+select company, name, amount from customer_a11 as cus inner join order_a11 as ord
+        on ord.customerid=cus.recid inner join salesrep_a11 as sale
+        on cus.salesrepsid=sale.recid
+        group by company
+        order by company, name;
+***************************************************************************************
+Q-4	What is the average order size for each sales person whose order total is more than 	amount Rs.30,000/-.
+Ans
+select avg(amount), name, amount from order_a11 as ord inner join salesrep_a11 as sale
+        on ord.salesrepsid=sale.recid group by salesrepsid having sum(amount)>2000;
+***************************************************************************************
+Q-5	List all the sales person who are over 40 in age and who manages a sales person whose 	sales are over quota.
+Ans
+select   of.manager ,age, quota,actualsales  from office_a11 as of  inner join
+salesrep_a11 as sal  on of.recid=sal.officeid  where age<40 and quota<=actualsales;
+***************************************************************************************
+Q-6	List all the customers whose sales people are assign to two different offices in the 	"Eastern" sales region.
+Ans
+select name , company,region from customer_a11 as cus inner join salesrep_a11 as sal   on cus.salesrepsid=sal.recid
+inner join office_a11 as of
+ on  sal.officeid=of.recid where region ="gujarat";
+***************************************************************************************
+
+Q-7	List all of the sales persons whose office target sales exceeds the sum of their quota.
+Ans
+select   name , sum(quota)as Total_quota ,targetsales  from office_a11_avinash as of  inner join
+salesreps_a11_avinash as sal  on of.recid=sal.officeid group by name having Total_quota<targetsales;
+***************************************************************************************
+Q-8	List all the sales people whose average order size for products manufactured by 56 	i.e.(mfrid) is 	higher than the overall average order size.
+Ans
+select s.name
+from salesrep_a11 s
+join order_a11 o on o.salesrepsid = s.recid
+join product_a11 p on p.recid = o.productid
+group by s.name
+having AVG(o.qty) > (select avg(o.qty) from order_a11 o
+                    join product_a11 p on p.recid = o.productid
+                    where p.mfrid = 400);

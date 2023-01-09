@@ -1,0 +1,80 @@
+	
+Table Used: 
+	
+	-   newstudent (recid, surname, firstname, middlename, gender, admitdate, endeffdt)
+Ans
+
+CREATE TABLE newstudent_deep (
+    recid int,
+    surname varchar(20),
+    firstname varchar(20),
+    middlename varchar(20),
+    gender varchar(10),
+    admitdate date,
+    endeffedt date
+  );
+Select *  from newstudent_deep;
+insert into newstudent_deep(recid, surname,firstname,middlename,gender,admitdate,endeffedt)values(1,'patel','Deepbhai','Narendrakumar','Male','2022-1-4','2029-1-8');
+insert into newstudent_deep(recid, surname,firstname,middlename,gender,admitdate,endeffedt)values(2,'patel','Darshanbhai','Narendrakumar','Male','2022-6-1','2028-1-11');
+insert into newstudent_deep(recid, surname,firstname,middlename,gender,admitdate,endeffedt)values(3,'prajapati','Kenil','Ashokbhai','Male','2022-6-2','2030-4-22');
+insert into newstudent_deep(recid, surname,firstname,middlename,gender,admitdate,endeffedt)values(4,'lad','stuti','Maheshkumar','Female','2022-1-9','2025-3-22');
+select * from newstudent_deep;
+
+
+NOTE :	[I] Please specify the CREATE query for above table as well.
+	[II] In all below queries, fetch and display "Name" field in this format :  
+	"Surname Firstname Middlename".
+	[III] "endeffdt" represents date on which a particular student record was deleted. Hence fetch only active student records from above table.
+
+Q-1	List out the information of students whose surname is "Shah".
+Ans
+Select Concat(surname,' ',firstname,' ',middlename)as Full_Name, gender, admitdate from newstudent_deep where surname='shah';
+***************************************************************************************
+Q-2	List out the information of all the Male students.
+Ans
+Select Concat(surname,' ',firstname,' ',middlename)as Full_Name, gender, admitdate from newstudent_deep where gender='Male';
+***************************************************************************************
+Q-3	List out the information of all the Female students, whose surname is "Patel" or have 	been admitted after than 1-Jan-2006.
+Ans
+Select Concat(surname,' ',firstname,' ',middlename)as Full_Name, gender, admitdate from newstudent_deep
+           where gender='Female' and surname='Patel' and admitdate>'2006-06-01';
+
+***************************************************************************************
+
+Q-4	List out the information of all the students whose second name ends with "Bhai".
+Ans
+Select Concat(surname,' ',firstname,' ',middlename)as Full_Name, gender, admitdate from newstudent_deep where middlename like '%bhai';
+***************************************************************************************
+
+Q-5	List out the information of all the students whose first name starts with "M" and 	second name has "ant".
+Ans
+ Select Concat(surname,' ',firstname,' ',middlename)as Full_Name, gender, admitdate from newstudent_deep where firstname like 'M%' and middlename like '%ant%';
+***************************************************************************************
+Q-6	List out the information of all the students whose surname has "c" in the third place.
+Ans
+ Select Concat(surname,' ',firstname,' ',middlename)as Full_Name, gender, admitdate from newstudent_deep where surname like '__a%';
+***************************************************************************************
+
+Q-7	List the name's of the all the students in "Ekta R. Patel" format.
+Ans
+Select Concat(firstname,'  ',LEFT(middlename,1),'.  ',surname)as Full_Name from newstudent_deep;
+
+***************************************************************************************
+Q-8	List out First Name as well as its respective length for all the students.
+Ans
+Select firstname, length(firstname) as Length from newstudent_deep;
+***************************************************************************************
+
+Q-9	Append the First Name with "bhai" for all the male students whose First Name does not 	contain "bhai".
+Ans
+Select concat(firstname,'bhai') from newstudent_deep where gender='male' and firstname not like '%bhai';
+***************************************************************************************
+Q-10	List out First Name of all the male students with "Mr." before the First Name.
+Ans
+Select concat('Mr.',firstname) from newstudent_deep where gender='male';
+***************************************************************************************
+
+Q-11	List out First Name of all the students which sounds like "Mira".
+Ans
+elect firstname from newstudent_deep where firstname sounds like 'khushi';
+***************************************************************************************

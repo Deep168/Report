@@ -1,0 +1,150 @@
+Tables Used
+    
+    -   student  (recid, name)
+
+    -   studentdetail (recid, studentid, standard, flagsex)
+
+    -   studentpresent (recid, studentid, month, present)
+
+    -   studenthours (recid, studentid, datex, hours)
+
+ -   product (recid, name)
+
+    -   productprice (recid, productid, code, effdt, price)
+
+Ans:
+
+CREATE TABLE Student_a3 (
+    recid int,
+    Name varchar(20));
+Select *  from Student_a3;
+***************************************************************************************
+
+CREATE TABLE Studentdetail_a3 (
+    recid int,
+stdid int,
+standard int,
+flagsex varchar(20);
+Select *  from Studentdetail_a3;
+***************************************************************************************
+
+CREATE TABLE Studentpresent_a3 (
+    recid int,
+stdid int,
+ Month int,
+ present int);
+Select *  from Studentpresent_a3;
+***************************************************************************************
+
+CREATE TABLE Studenthours_a3 (
+    recid int,
+stdid int,
+datex DATE,
+ hours int);
+Select *  from Studenthours_a3;
+***************************************************************************************
+CREATE TABLE Product_a3 (
+    recid int,
+    Name varchar(20));
+Select *  from Product_a3;
+***************************************************************************************
+CREATE TABLE Productprice_a3 (
+    recid int,
+    productid int,
+    code int,
+    effedt DATE,
+  price int);
+Select *  from Productprice_a3;
+***************************************************************************************
+insert into  Student_a3(recid , Name )values(1,'Deep');
+insert into  Student_a3(recid , Name )values(2,'Darshan');
+insert into  Student_a3(recid , Name )values(3,'Darshit');
+insert into  Student_a3(recid , Name )values(4,'stuti');
+insert into  Student_a3(recid , Name )values(5,'khushi');
+Select *  from Student_a3;
+***************************************************************************************
+insert into  Studentdetail_a3(recid , stdid, standard, flagsex )values(1,1,8,'Male');
+insert into  Studentdetail_a3(recid , stdid, standard, flagsex )values(2,5,11,'Male');
+insert into  Studentdetail_a3(recid , stdid, standard, flagsex )values(3,9,12,'Male');
+insert into  Studentdetail_a3(recid , stdid, standard, flagsex )values(4,10,9,'Female');
+insert into  Studentdetail_a3(recid , stdid, standard, flagsex )values(5,15,10,'Female');
+Select *  from Studentdetail_a3;
+***************************************************************************************
+
+
+insert into  Studentpresent_a3(recid , stdid, month, present )values(1,1,8,20);
+insert into  Studentpresent_a3(recid , stdid, month, present )values(2,5,7,22);
+insert into  Studentpresent_a3(recid , stdid, month, present )values(3,9,2,20);
+insert into  Studentpresent_a3(recid , stdid, month, present )values(4,10,6,18);
+insert into  Studentpresent_a3(recid , stdid, month, present )values(5,15,3,27);
+select * from  Studentpresent_a3;
+***************************************************************************************
+
+
+insert into  Studenthours_a3(recid , stdid, datex, hours )values(1,1,'2020-12-12',20);
+insert into  Studenthours_a3(recid , stdid, datex, hours )values(1,5,'2020-09-5',6);
+insert into  Studenthours_a3(recid , stdid, datex, hours )values(1,9,'2020-02-12',7);
+insert into  Studenthours_a3(recid , stdid, datex, hours )values(1,10,'2020-06-30',8);
+insert into  Studenthours_a3(recid , stdid, datex, hours )values(1,15,'2020-03-16',9);
+select * from studenthours_a3
+***************************************************************************************
+insert into Product_a3 (recid, Name)values(1, 'Product1');
+insert into Product_a3 (recid, Name)values(2, 'Product2');
+insert into Product_a3 (recid, Name)values(3, 'Product3');
+insert into Product_a3 (recid, Name)values(4, 'Product4');
+insert into Product_a3 (recid, Name)values(5, 'Product5');
+select * from Product_a3;
+***************************************************************************************
+insert into Productprice_a3 (recid, productid, code,effedt,price )values(1,1, 050,'2020-12-12',1000);
+insert into Productprice_a3 (recid, productid, code,effedt,price )values(2,5, 011,'2020-06-06',10000);
+insert into Productprice_a3 (recid, productid, code,effedt,price )values(3,10, 010,'2010-01-01',5000);
+insert into Productprice_a3 (recid, productid, code,effedt,price )values(4,15, 099,'2018-03-18',9000);
+insert into Productprice_a3 (recid, productid, code,effedt,price )values(5,60, 047,'2019-05-20',6000);
+select * from Productprice_a3;
+***************************************************************************************
+Modification requirement:
+        
+        -   Change value of 'student.name' with any other value for student.recid = 3.
+Ans
+UPDATE Student_a3 SET Name='Kenil' WHERE  recid=3;
+select * from Student_a3;
+ ***************************************************************************************      
+        -   Update all "student" records to append character " A." as the middle name for "student.name" field.
+Ans
+UPDATE Student_a3 set Name=CONCAT(Name,'A');
+
+select * from Student_a3;
+***************************************************************************************      
+        -   Update all "productprice" records to add 25.00 in "price" field.
+Ans
+UPDATE Productprice_a3 set price=price+25;
+***************************************************************************************    
+        -   Update "product" table to add "A" in 'product.name' where related 'product.code = 50;
+Ans
+Update Product_a3  set Name=concat("A",Name)Where recid in(select recid from Productprice_a3 where code=50);
+select * from Product_a3
+***************************************************************************************   
+
+        -   Update all "studentpresent" records to add 2 in 'studentpresentpresent' where related 'studenthours.hours >= 8'.
+Ans
+Update Studentpresent_a3 set present= present+2 where recid in (select recid from Studenthours_a3 Where hours >=8);
+select * from Studentpresent_a3;
+
+***************************************************************************************   
+  Delete requirement:
+        
+        -   Remove a record from "product" table where 'product.recid = 5'
+Ans 
+         delete from Product_a3 Where recid=5 
+*************************************************************************************** 
+
+Remove all "student" records where the 'student.name' starts with character "A".
+Ans
+delete from Student_a3 where Name like 's%';
+*************************************************************************************** 
+        
+        -   Remove all "studentdetails" record where related 'studenthours.hours <= 3'.
+Ans
+delete from Studentdetail_a3 where recid in (select recid from Studenthours_a3 Where hours <=3);
+select * from Studenthours_a3;
+*************************************************************************************** 

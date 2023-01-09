@@ -1,0 +1,214 @@
+ Tables Used:=
+    
+    -	student  (recid, name)
+
+    -   studentdetail (recid, studentid, standard, flagsex)
+
+    -   studentpresent (recid, studentid, month, present)
+
+    -   studenthours (recid, studentid, datex, hours)
+
+    -   product (recid, name)
+
+    -   productprice (recid, productid, code, effdt, price)
+
+Ans:
+
+CREATE TABLE Student_a5 (
+    recid int,
+    Name varchar(20));
+Select *  from Student_a5;
+***************************************************************************************
+
+CREATE TABLE Studentdetail_a5 (
+    recid int,
+stdid int,
+standard int,
+flagsex varchar(20);
+Select *  from Studentdetail_a5;
+***************************************************************************************
+
+CREATE TABLE Studentpresent_a5 (
+    recid int,
+stdid int,
+ Month int,
+ present int);
+Select *  from Studentpresent_a5;
+***************************************************************************************
+
+CREATE TABLE Studenthours_a5 (
+    recid int,
+stdid int,
+datex DATE,
+ hours int);
+Select *  from Studenthours_a5;
+***************************************************************************************
+CREATE TABLE Product_a5 (
+    recid int,
+    Name varchar(20));
+Select *  from Product_a5;
+***************************************************************************************
+CREATE TABLE Productprice_a5 (
+    recid int,
+    productid int,
+    code int,
+    effedt DATE,
+  price int);
+Select *  from Productprice_a5;
+
+
+
+insert into  Student_a5(recid , Name )values(1,'Deepbhai');
+insert into  Student_a5(recid , Name )values(2,'Kabirbhai');
+insert into  Student_a5(recid , Name )values(3,'Om');
+insert into  Student_a5(recid , Name )values(4,'mira');
+insert into  Student_a5(recid , Name )values(5,'khushi');
+Select *  from Student_a5;
+***************************************************************************************
+insert into  Studentdetail_a5(recid , stdid, standard, flagsex )values(1,1,8,'Male');
+insert into  Studentdetail_a5(recid , stdid, standard, flagsex )values(2,5,11,'Male');
+insert into  Studentdetail_a5(recid , stdid, standard, flagsex )values(3,9,12,'Male');
+insert into  Studentdetail_a5(recid , stdid, standard, flagsex )values(4,10,9,'Female');
+insert into  Studentdetail_a5(recid , stdid, standard, flagsex )values(5,15,10,'Female');
+Select *  from Studentdetail_a5;
+***************************************************************************************
+
+
+insert into  Studentpresent_a5(recid , stdid, month, present )values(1,1,8,20);
+insert into  Studentpresent_a5(recid , stdid, month, present )values(2,5,7,22);
+insert into  Studentpresent_a5(recid , stdid, month, present )values(3,9,2,20);
+insert into  Studentpresent_a5(recid , stdid, month, present )values(4,10,6,18);
+insert into  Studentpresent_a5(recid , stdid, month, present )values(5,15,3,27);
+select * from  Studentpresent_a5;
+***************************************************************************************
+
+
+insert into  Studenthours_a5(recid , stdid, datex, hours )values(1,1,'2020-12-12',20);
+insert into  Studenthours_a5(recid , stdid, datex, hours )values(1,5,'2020-09-5',6);
+insert into  Studenthours_a5(recid , stdid, datex, hours )values(1,9,'2020-02-12',7);
+insert into  Studenthours_a5(recid , stdid, datex, hours )values(1,10,'2020-06-30',8);
+insert into  Studenthours_a5(recid , stdid, datex, hours )values(1,15,'2020-03-16',9);
+select * from Studenthours_a5
+***************************************************************************************
+insert into Product_a5 (recid, Name)values(1, 'Product1');
+insert into Product_a5 (recid, Name)values(2, 'Product2');
+insert into Product_a5 (recid, Name)values(3, 'Product3');
+insert into Product_a5 (recid, Name)values(4, 'Product4');
+insert into Product_a5 (recid, Name)values(5, 'Product5');
+select * from Product_a5;
+***************************************************************************************
+insert into Productprice_a5 (recid, productid, code,effedt,price )values(1,1, 050,'2020-12-12',1000);
+insert into Productprice_a5 (recid, productid, code,effedt,price )values(2,5, 011,'2020-06-06',10000);
+insert into Productprice_a5 (recid, productid, code,effedt,price )values(3,10, 010,'2010-01-01',5000);
+insert into Productprice_a5 (recid, productid, code,effedt,price )values(4,15, 099,'2018-03-18',9000);
+insert into Productprice_a5 (recid, productid, code,effedt,price )values(5,60, 047,'2019-05-20',6000);
+select * from Productprice_a5;
+***************************************************************************************
+Q-1 Write a query which will print name of each student, and his or her attendance report for current month. 
+Fields : Name, Attendance Report for Current Month
+
+	Under "Attendance Report for Current Month" column:
+		if 'studentpresent.present' is less than or equal to 7 print "Poor", 
+		if 'studentpresent.present' is more than 7 and less than or equals 15 print "Good", 
+		if 'studentpresent.present' is more than 15 and less than or equals 20 print "Better", 
+		if 'studentpresent.present' is more than 20 print "Best".
+
+Ans
+         select Name ,  present,
+CASE
+    when present>20 then 'Best'
+    when present>15 then 'good'
+    when present>7 then 'Better'
+    ELSE 'poor'
+END AS AttendanceReport
+from Student_a5 natural join Studentpresent_a5;
+***************************************************************************************
+Q-2 Write a query to print student name, total number of hours for Jan, Feb, March month. Information for each student should be printed in a single row.
+
+	Fields : Name, Working Hours for Jan, Working Hours for Feb, Working Hours for March
+
+	See following example:
+	Name		Working Hours for Jan	Working Hours for Feb	Working Hours for March
+	Minesh		80			70			90
+	Reena		70			80			90
+***************************************************************************************
+
+3  Print information for the student having name like "Mira", "Kabir", "Om", "Manas"
+	Fields: Name, Standard
+Ans
+Select Name , standard from Student_a5 natural join Studentdetail_a5 where Name in ('mira', 'kabir', 'Om');
+
+***************************************************************************************
+Q-4 Print information for the student having name other than "Mira", "Kabir", "Om", "Manas"
+	Fields: Name, Standard
+Ans
+Select Name , standard from Student_a5 natural join Studentdetail_a5 where Name not in ('mira', 'kabir', 'Om');
+***************************************************************************************
+Q-5 Print information for the student having presence for Jananuary between 20 to 25.
+	Fields: Name, Standard, Present
+Ans
+
+select Name,standard,present from Student_a5  inner join Studentpresent_a5
+    on Student_a5.recid = Studentpresent_a5.recid
+    where Studentpresent_a5.Month=6 and Studentpresent_a5.present between 15 and 20,
+   and
+  Student_a5.recid in (select recid, standard from Studentdetail_a5);
+
+
+***************************************************************************************
+
+Q-6 Print information for the student having charcter "r" at the third position of their name.
+	Fields: Name, Standard
+	Eg: It should print information for "Mira", "Gira" etc.
+Ans
+Select Name , standard from Student_a5 natural join Studentdetail_a5 where Name like '__r%';
+***************************************************************************************
+
+Q-7 Print information for the student having "bhai" in their name. 
+	Fields: Name, Standard
+Ans 
+Select Name , standard from Student_a5 natural join Studentdetail_a5 where Name like '____bhai%';
+***************************************************************************************
+Q-8 Print information for the student who have  presence=<=20  in the college.
+	Fields: Name, Standard
+Ans
+select Name, standard from Student_a5 as st inner join Studentdetail_a5 as sd on st.recid=sd.recid
+   inner join Studentpresent_a5 as sp on st.recid=sp.recid where present<=20;
+***************************************************************************************
+
+Q-9 Write a query which will print name of each student, and his or her attendance report for current month. 
+	Fields : Name, Attendance Report for Current Month
+
+	In "Attendance Report for Current Month" column 
+	if student has presence for that month then print "Present"
+	else print "Not Present".
+Ans
+select Name, present, case
+   when present<10 then 'not Present'
+   when 10<=present then 'Present'
+   ELSE 'failllll'
+   end as result
+   from Student_a5 as st inner join Studentpresent_a5 as sp
+   on st.recid=sp.recid
+   where sp.Month=6;
+***************************************************************************************
+Q-10 Execute following queries and evaluate the output by giving appropriate reason.
+	SELECT STRCMP('text', 'text2'); Ans -1
+	SELECT STRCMP('text2', 'text'); Ans  1
+	SELECT STRCMP('text', 'text');Ans 0
+Ans
+If string1 = string2, this function returns 0
+If string1 < string2, this function returns -1
+If string1 > string2, this function returns 1
+***************************************************************************************
+
+Q-11 Print the student information having average presence (in percentage) for Jan, Feb and March between 60 to 75.
+	Fields: Name, Standard, Present
+***************************************************************************************
+
+Q-12 List information of the product having "Maximum Price" within date range 01-01-2006 to 15-01-2006
+Ans
+SELECT MAX(price) AS "Max Price" FROM Productprice_a5 WHERE effedt BETWEEN '2006-01-02' AND '2006-01-15'
+***************************************************************************************
+
+

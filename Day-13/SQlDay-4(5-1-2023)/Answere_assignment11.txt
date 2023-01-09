@@ -1,0 +1,216 @@
+Table Used: 
+===========
+student (recid, rollno, fname, sname, surname, admitdate, birthdate, standard, sex)
+Ans
+create  table student_a11(recid int not null,
+ rollno int not null, fname varchar(20) not null,
+  sname varchar(20) not null, surname varchar(20) not null,
+   admitdate date not null, birthdate date not null,
+    standard int not null, sex varchar(20) not null);
+
+insert into student_a11 (recid, rollno, fname, sname, surname, admitdate, birthdate, standard, sex)
+values(1,35,'Deep','Narendrakumar','Patel','2006-1-2','2001-9-5',10,'Male');
+insert into student_a11 (recid, rollno, fname, sname, surname, admitdate, birthdate, standard, sex)
+values(1,35,'Hitesh','Ashokbhai','Patel','2006-2-2','2001-2-1',7,'Male');
+insert into student_a11 (recid, rollno, fname, sname, surname, admitdate, birthdate, standard, sex)
+values(1,35,'Mahesh','Rajeshkumar','lad','2006-7-7','2001-5-5',11,'Male');
+insert into student_a11 (recid, rollno, fname, sname, surname, admitdate, birthdate, standard, sex)
+values(1,35,'Harsh','Maheshbhai','Prajapati','2006-9-5','2000-12-12',12,'Male');
+
+Write a query for following requirement:
+=======================================
+
+Q-1	Display Full Name of all the male students whose first name ends with "h" and are admitted between 1st January 2006 to 1st August 2006.
+
+	Eg:
+
+	|----------------------|
+	|FULL NAME	       |	
+	|----------------------|
+	|Kamlesh Rajubhai Patel|
+	------------------------
+
+	Here "Kamlesh" is the value of 'fname' column, "Rajubhai" of 'sname' and "Patel" of 'surname' column. And first character is in capital for fname, sname, surname and each column value is separated by single space.
+
+Ans
+
+select concat(  upper( substr(fname,1,1)  ) ,   substr(fname,2) , " ",
+             upper(    substr(sname,1,1)  ) ,   substr(sname,2)  ,"  ",
+             upper(    substr(surname,1,1) ) ,   substr(surname,2)   )
+     from student_a11 where fname like '%h' and admitdate between '2006-1-1' and '2006-8-1';
+***************************************************************************************
+
+Tables Used:
+===========
+
+1) product (recid, mfrid, description, price, qtyonhand)
+
+2) orders (recid, customerid, orderdate, salesrepsid, productid, qty, amount)
+
+3) customer (recid, company, salesrepsid, creditlimit)
+
+4) salesreps (recid, name, officeid, designation, hiredate, manager, quota, sales, age)
+
+5) office (recid, city, region, manager, targetsales, actualsales)
+Ans
+create  table product_a11 (recid int,
+mfrid int,
+ description varchar(20),
+  price int,
+   qtyonhand int ,
+   primary key(recid));
+
+create table office_a11
+ (recid int ,  city varchar(20), region varchar(20),
+ manager varchar(20), targetsales int , actualsales int,
+ primary key(recid));
+
+create table customer_a11 (recid int  ,
+ company varchar(20),
+  salesrepsid int  ,
+  creditlimit int,
+  primary key(recid),
+  foreign key (salesrepsid) references salesrep_a11(recid));
+select * from  customer_a11;
+
+create table salesrep_a11(recid int,
+name varchar(20),
+ officeid int,
+ designation varchar(20),
+  hiredate date,
+   manager varchar(20),
+    quota varchar(20),
+    sales int ,
+     age int,
+primary key(recid),
+  foreign key(officeid) references office_a11(recid));
+
+
+create table order_a11 (recid int  ,
+ customerid int,
+ orderdate date,
+ salesrepsid int,
+ productid int ,
+ qty int ,
+  amount int,
+  primary key(recid),
+  foreign key(customerid) references customer_a11(recid),
+ foreign key(salesrepsid) references salesreps_a11(recid),
+ foreign key(productid) references product_a11(recid) );
+
+
+insert into product_a11(recid, mfrid, description, price, qtyonhand)values(1,200,'moblie',
+14000,12);
+insert into product_a11(recid, mfrid, description, price, qtyonhand)values(2,400,'laptop',
+40000,10);
+insert into product_a11(recid, mfrid, description, price, qtyonhand)values(3,600,'Headphone',
+2000,25);
+select * from product_a11;
+
+insert into customer_a11(company, salesrepsid, creditlimit) values
+('company1',1,22000),
+('company2',1,21000),
+('company3',2,20000),
+('company4',2,19000),
+('company5',3,18000),
+('company6',3,17000),
+('company7',4,16000),
+('company8',4,15000);
+
+insert into salesrep_a11 (recid,name, officeid, designation, hiredate, manager, quota, sales, age) values
+(2,'sale1',1,'salesman1','2022-01-01','avinash',50,10000,21),
+(3,'sale2',1,'salesman2','2023-01-01','avinash',50,10000,23),
+(4,'sale3',2,'salesman1','2022-01-01','hitesh',70,8000,22),
+(5,'sale4',2,'salesman2','2023-01-01','hitesh',30,40000,25);
+
+insert into order_a11(recid,customerid, orderdate, salesrepsid, productid, qty, amount) values
+(1,1,'2023-01-01',1,1,40,4000),
+(2,2,'2023-01-02',2,1,40,4000),
+(3,3,'2023-01-03',3,1,20,2000),
+(4,4,'2023-01-04',4,2,20,1000),
+(5,5,'2023-01-05',1,2,20,1000),
+(6,6,'2023-01-01',2,2,10,500),
+(7,7,'2023-01-02',3,3,50,10000),
+(8,8,'2023-01-03',4,3,50,10000);
+
+***************************************************************************************
+Write queries for below requirements:
+=====================================
+
+Q-1	Find Name of all those sales representatives whose offices are in cities ending with 
+	"pur" and who have atleast 2 customers. The sales representative must be hired before 
+	1st January 2006 and his/her minimum age should be 21 yrs.
+
+	Display fields : Sales Rep. Name, Office City, No. of Customers, Hired on
+Ans
+select name,city,count(cus.recid),hiredate,age
+    from customer_a11 as cus inner join salesreps_a11 as sale
+    on cus.salesrepsid = sale.recid inner join office_a11 as off
+    on sale.officeid =off.recid
+    where hiredate>Date('2006-01-01') and age>20 and city like '%pur'
+      group by sale.recid
+     having count(cus.recid>=1);
+***************************************************************************************
+
+Q-2	Find following information for each customer:
+
+	Display fields : Company Name, Sales Rep. Name, Sales Rep. Office City, Company Credit
+ Ans
+select company, name, city, creditlimit from customer_a11 as c1 inner join salesrep_a11 as s1 on c1.recid=s1.recid
+inner join office_a11 as o1 on s1.recid=o1.recid;
+
+***************************************************************************************
+Q-3	Find following information for each office:
+
+	Office city, Total Sales Rep., Total sale by all sales Rep.,
+	Target Sales, Actual Sales, Difference of Target and Actual Sales.
+
+	Display fields : Office City, No. of Sales Rep., Total Sale, Target Sales, Actual  Sales, Difference.
+Ans
+select city,count(officeid),sum(sales),targetsales,actualsales,(targetsales-actualsales) as diff
+    from office_a11 as of inner join salesreps_a11 as sa
+    on of.recid = sa.officeid
+    group by officeid;
+
+***************************************************************************************
+
+Q-4	Find following information for each product:
+
+	Product description, Price, Quantity on hand, Total no. of 
+	orders for each product, Total quantity ordered, Total amount of the orders for each product.
+
+	Display fields : Description, Price, Quantity, Orders, Quantity, Total Amount
+Ans
+select description,price,qtyonhand,count(productid),sum(qty),sum(amount)
+    from product_a11 as pro inner join order_a11 as ord
+    on pro.recid = ord.productid
+    group by productid;
+
+***************************************************************************************
+Q-5	Find order details for all the customers. There will be one row per customer displaying 	
+	total quantity ordered by them and the amount spent by each customer.
+	
+	Display fields : Company Name, Total Quantity Ordered, Total Amount
+Ans
+ select company,sum(qty),sum(amount)
+    from customer_a11 as cus inner join order_a11 as ord
+    on cus.recid = ord.customerid
+    group by ord.customerid;
+
+***************************************************************************************
+
+Q-6	Display all the sales representatives hired within the past five years from today along with thier Quota and 
+	Sales information.
+	
+	Display fields : Sales Rep. Name, Hired on, Quota, Sales
+Ans
+select name,hiredate,quota,sales from salesrep_a11
+    where hiredate>subdate(now(),interval 5 year);
+	
+***************************************************************************************
+
+Q-7	Find total number of customers for all the products ordered. There will be one row per 	
+	order displaying product description, and total number of customers who have ordered 	that product.
+
+	Display fields : Product Description, Total No. of Customers who Ordered this Product.
+***************************************************************************************

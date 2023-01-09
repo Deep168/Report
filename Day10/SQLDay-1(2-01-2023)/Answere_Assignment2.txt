@@ -1,0 +1,136 @@
+ Tables Used
+    
+    -   student  (recid, name)
+
+    -   studentdetail (recid, studentid, standard, flagsex)
+
+    -   studentpresent (recid, studentid, month, present)
+
+    -   studenthours (recid, studentid, datex, hours)
+
+Ans:
+
+CREATE TABLE Student_3 (
+    recid int,
+    Name varchar(20));
+Select *  from Student_3;
+***************************************************************************************
+
+CREATE TABLE Studentdetail_3 (
+    recid int,
+stdid int,
+standard int,
+flagsex varchar(20);
+Select *  from Studentdetail_3;
+***************************************************************************************
+
+CREATE TABLE Studentpresent_3 (
+    recid int,
+stdid int,
+ Month int,
+ present int);
+Select *  from Studentpresent_3;
+***************************************************************************************
+
+CREATE TABLE Studenthours_3 (
+    recid int,
+stdid int,
+datex DATE,
+ hours int);
+Select *  from Studenthours_3;
+***************************************************************************************
+
+Create above mentioned tables.
+
+- Insert appropriate records in the above tables.
+
+Ans 
+insert into  Student_3(recid , Name )values(1,'Deep');
+insert into  Student_3(recid , Name )values(2,'Darshan');
+insert into  Student_3(recid , Name )values(3,'Darshit');
+insert into  Student_3(recid , Name )values(4,'stuti');
+insert into  Student_3(recid , Name )values(5,'khushi');
+Select *  from Student_3;
+***************************************************************************************
+insert into  Studentdetail_3(recid , stdid, standard, flagsex )values(1,1,8,'Male');
+insert into  Studentdetail_3(recid , stdid, standard, flagsex )values(2,5,11,'Male');
+insert into  Studentdetail_3(recid , stdid, standard, flagsex )values(3,9,12,'Male');
+insert into  Studentdetail_3(recid , stdid, standard, flagsex )values(4,10,9,'Female');
+insert into  Studentdetail_3(recid , stdid, standard, flagsex )values(5,15,10,'Female');
+Select *  from Studentdetail_3;
+***************************************************************************************
+insert into  Studentpresent_3(recid , stdid, month, present )values(1,1,8,20);
+insert into  Studentpresent_3(recid , stdid, month, present )values(2,5,7,22);
+insert into  Studentpresent_3(recid , stdid, month, present )values(3,9,2,20);
+insert into  Studentpresent_3(recid , stdid, month, present )values(4,10,6,18);
+insert into  Studentpresent_3(recid , stdid, month, present )values(5,15,3,27);
+select * from  Studentpresent_3;
+***************************************************************************************
+insert into  Studenthours_3(recid , stdid, datex, hours )values(1,1,'2020-12-12',20);
+insert into  Studenthours_3(recid , stdid, datex, hours )values(1,5,'2020-09-5',6);
+insert into  Studenthours_3(recid , stdid, datex, hours )values(1,9,'2020-02-12',7);
+insert into  Studenthours_3(recid , stdid, datex, hours )values(1,10,'2020-06-30',8);
+insert into  Studenthours_3(recid , stdid, datex, hours )values(1,15,'2020-03-16',9);
+select * from Studenthours_3
+***************************************************************************************
+
+  Display following details for each student:
+        
+        -   Name
+
+        -   Standard
+
+        -   Sex
+Ans
+select Student_3.Name, Studentdetail_3.standard, Studentdetail_3.flagsex  from Student_3 inner join
+Studentdetail_3 on Student_3.recid=Studentdetail_3.recid
+***************************************************************************************
+
+ NOTE : The same above headers should be displayed in the query & apply sorting on Name.
+    
+    -   Find SUM of student hours.			Fields : Name, TotalHours
+Ans
+select Student_3.Name , sum(Studenthours_3.hours) from Student_3 inner join Studenthours_3
+ on Student_3.recid=Studenthours_3.recid group by Student_3.recid
+***************************************************************************************
+
+    -   Find Average Present of each student.		Fields : Name, Present
+Ans
+select Student_3.Name , avg(Studentpresent_3.present) from Student_3 inner join Studentpresent_3
+ on Student_3.recid=Studentpresent_3.recid group by Student_3.recid
+***************************************************************************************
+
+    -   Find Minimum present among all students.	Fields : MinPresent
+Ans
+SELECT min(present) "MinPresent" FROM trainee.Studentpresent_3;
+***************************************************************************************
+
+    -   Find Maximum present among all students.	Fields : MaxPresent
+Ans
+SELECT max(present) "MaxPresent" FROM trainee.Studentpresent_3;
+***************************************************************************************
+Display fields like Name, Date, Hours from "studenthours" table where Date should be in following format :
+        
+        -   DD/MM/YY
+Ans
+select Name,Hours,DATE_FORMAT(datex,'%d/%m %y') from
+        Student_3 natural join Studenthours_3;
+***************************************************************************************
+
+        -   MM/DD/YY
+Ans
+select Name,Hours,DATE_FORMAT(datex,'%m/%d /%y') from
+        Student_3 natural join Studenthours_3;
+***************************************************************************************
+        -   YYYY-MM-DD
+Ans
+select Name,Hours,DATE_FORMAT(datex,'%y/%m /%d') from
+        Student_3 natural join Studenthours_3;
+***************************************************************************************
+
+        -   MM/DD Day   
+Ans
+select Name,Hours,DATE_FORMAT(datex,'%m/%d /%a') from
+        Student_3 natural join Studenthours_3;
+***************************************************************************************
+

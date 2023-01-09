@@ -1,0 +1,53 @@
+  Tables Used:=
+    
+    -	student  (recid, name)
+
+    -   studentdetail (recid, studentid, standard, flagsex)
+
+    -   studentpresent (recid, studentid, month, present)
+
+    -   studenthours (recid, studentid, datex, hours)
+
+    -   product (recid, name)
+
+    -   productprice (recid, productid, code, effdt, price)
+
+
+-   Write queries for following requirements:
+
+Q-1 Print total number of boys and girls within a single record.
+	Fields : Boys, Girls
+
+	Required Output:
+	================
+	Boys	Girls
+	5	3
+Ans
+select
+  count(case when flagsex='Male' then 1 end) as Boys,
+  count(case when flagsex='Female' then 1 end) as Girls
+  from Studentdetail_a5;
+***************************************************************************************
+
+Q-2 Find total number of Hours for Boys and Girls. 
+	Fields : Gender, Present(Hrs)
+
+	Required Output:
+	================
+	Gender	Present(Hrs)
+	Boys	100
+	Girls	120
+
+Ans
+select flagsex , sum(hours)   From Studentdetail_a5 as sd inner join Studenthours_a5 as sh on sd.stdid=sh.stdid  group by sd.flagsex;
+
+***************************************************************************************
+Q-3 Find all latest prices for each code for each product.
+	Fields : Product Name, Code, Date, Price
+
+	Required Output:
+	================
+	Product Name	Code	Date		Price
+	Computer	COMP	2007-01-01	Rs. 24,000/-
+Ans
+select Name as ProductName , code as Code , effedt as datex , price as  Price From Productprice_a5 natural join Product_a5 Where effedt in (select max(effedt) from Productprice_a5 group by recid);

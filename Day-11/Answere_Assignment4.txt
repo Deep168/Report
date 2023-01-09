@@ -1,0 +1,172 @@
+ 1 Write a query which will return value '5.0' for input value of '4.1' as well as '4.8'.
+Ans
+select ceil(4.1);
+select ceil(4.8);
+***************************************************************************************
+2   Write a query which will return value '4.0' for input value of '4.1' as well as '4.8'.
+select floor(4.1);
+select floor(4.8);
+***************************************************************************************
+3 What will be the output of following query:
+	SELECT MOD(11,3);
+Ans 2
+	SELECT 11 % 3;
+Ans  2
+***************************************************************************************
+4 Write a query to find 2 raise to power 3.
+Ans
+SELECT POWER(2,3) 
+***************************************************************************************
+5 Write a query to generate random number using MySQL function.
+Ans
+SELECT RAND();
+***************************************************************************************
+6 Write a query to supply seed to the function generating random number.
+Ans
+SELECT RAND(),RAND(2),RAND(2);
+***************************************************************************************
+7 Write a query which will return value '4' for '3.5' and '3' for '3.4'.
+Ans
+SELECT ROUND(3.5);
+SELECT ROUND(3.4);
+***************************************************************************************
+8 Write a query so that output will be '15.75' for the value '15.7463847'.
+Ans
+SELECT ROUND(15.7483637,2);
+***************************************************************************************
+9 Write a query to find square root of given value. What will be the output if the provided value is negative?
+Ans
+SELECT SQRT(-2);= Null;
+***************************************************************************************
+10 Write a query so that output will be '15.74' for the value '15.7463847'.
+Ans
+select ROUND( floor(15.7463847*100)/100,2)
+***************************************************************************************
+11 Write a query which will output '15.2500' for provided value '15.25'.
+Ans
+SELECT ROUND(15.25,4);
+***************************************************************************************
+ Tables Used:=
+    
+    -	student  (recid, name)
+
+    -   studentdetail (recid, studentid, standard, flagsex)
+
+    -   studentpresent (recid, studentid, month, present)
+
+    -   studenthours (recid, studentid, datex, hours)
+
+    -   product (recid, name)
+
+    -   productprice (recid, productid, code, effdt, price)
+
+Ans:
+
+CREATE TABLE Student_a4 (
+    recid int,
+    Name varchar(20));
+Select *  from Student_a4;
+***************************************************************************************
+
+CREATE TABLE Studentdetail_a4 (
+    recid int,
+stdid int,
+standard int,
+flagsex varchar(20);
+Select *  from Studentdetail_a4;
+***************************************************************************************
+
+CREATE TABLE Studentpresent_a4 (
+    recid int,
+stdid int,
+ Month int,
+ present int);
+Select *  from Studentpresent_a4;
+***************************************************************************************
+
+CREATE TABLE Studenthours_a4 (
+    recid int,
+stdid int,
+datex DATE,
+ hours int);
+Select *  from Studenthours_a4;
+***************************************************************************************
+CREATE TABLE Product_a4 (
+    recid int,
+    Name varchar(20));
+Select *  from Product_a4;
+***************************************************************************************
+CREATE TABLE Productprice_a4 (
+    recid int,
+    productid int,
+    code int,
+    effedt DATE,
+  price int);
+Select *  from Productprice_a4;
+
+
+
+insert into  Student_a4(recid , Name )values(1,'Deep');
+insert into  Student_a4(recid , Name )values(2,'Darshan');
+insert into  Student_a4(recid , Name )values(3,'Darshit');
+insert into  Student_a4(recid , Name )values(4,'stuti');
+insert into  Student_a4(recid , Name )values(5,'khushi');
+Select *  from Student_a4;
+***************************************************************************************
+insert into  Studentdetail_a4(recid , stdid, standard, flagsex )values(1,1,8,'Male');
+insert into  Studentdetail_a4(recid , stdid, standard, flagsex )values(2,5,11,'Male');
+insert into  Studentdetail_a4(recid , stdid, standard, flagsex )values(3,9,12,'Male');
+insert into  Studentdetail_a4(recid , stdid, standard, flagsex )values(4,10,9,'Female');
+insert into  Studentdetail_a4(recid , stdid, standard, flagsex )values(5,15,10,'Female');
+Select *  from Studentdetail_a4;
+***************************************************************************************
+
+
+insert into  Studentpresent_a4(recid , stdid, month, present )values(1,1,8,20);
+insert into  Studentpresent_a4(recid , stdid, month, present )values(2,5,7,22);
+insert into  Studentpresent_a4(recid , stdid, month, present )values(3,9,2,20);
+insert into  Studentpresent_a4(recid , stdid, month, present )values(4,10,6,18);
+insert into  Studentpresent_a4(recid , stdid, month, present )values(5,15,3,27);
+select * from  Studentpresent_a4;
+***************************************************************************************
+
+
+insert into  Studenthours_a4(recid , stdid, datex, hours )values(1,1,'2020-12-12',20);
+insert into  Studenthours_a4(recid , stdid, datex, hours )values(1,5,'2020-09-5',6);
+insert into  Studenthours_a4(recid , stdid, datex, hours )values(1,9,'2020-02-12',7);
+insert into  Studenthours_a4(recid , stdid, datex, hours )values(1,10,'2020-06-30',8);
+insert into  Studenthours_a4(recid , stdid, datex, hours )values(1,15,'2020-03-16',9);
+select * from Studenthours_a4
+***************************************************************************************
+insert into Product_a4 (recid, Name)values(1, 'Product1');
+insert into Product_a4 (recid, Name)values(2, 'Product2');
+insert into Product_a4 (recid, Name)values(3, 'Product3');
+insert into Product_a4 (recid, Name)values(4, 'Product4');
+insert into Product_a4 (recid, Name)values(5, 'Product5');
+select * from Product_a4;
+***************************************************************************************
+insert into Productprice_a4 (recid, productid, code,effedt,price )values(1,1, 050,'2020-12-12',1000);
+insert into Productprice_a4 (recid, productid, code,effedt,price )values(2,5, 011,'2020-06-06',10000);
+insert into Productprice_a4 (recid, productid, code,effedt,price )values(3,10, 010,'2010-01-01',5000);
+insert into Productprice_a4 (recid, productid, code,effedt,price )values(4,15, 099,'2018-03-18',9000);
+insert into Productprice_a4 (recid, productid, code,effedt,price )values(5,60, 047,'2019-05-20',6000);
+select * from Productprice_a4;
+***************************************************************************************
+
+	- Write a query to display all the product names with code in bracket in one column and 2 decimal significant price in second column, 
+	e.g. : MySql book (MS09210) | 10.99
+
+	Here 'MySql book' is product name and 'MS09210' is the product code while '10.99' is the 2 decimal significant price.
+Ans
+select concat(Name, ' (',code,')'), ROUND(price, 2) from Productprice_a4 natural join Product_a4;
+***************************************************************************************
+	
+	- Write a query to display following information separated by comma in a single row for the students who have atleast one 'a' in their name. 
+	The column heading should be STUDENTINFO.
+	
+	student name, standard, flag_sex
+
+Ans
+select concat(Name,', ',standard,', ',flagsex) as Studentdetail_a4 from Student_a4 natural join Studentdetail_a4 where Student_a4.Name like '%e%';
+
+	

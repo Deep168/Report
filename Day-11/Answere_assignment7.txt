@@ -1,0 +1,101 @@
+Q-1 Write a query which will output 123,456.78(as string datatype) for the input value of 123456.77912.
+Ans
+=> SELECT CAST(Round(123456.77912,2) AS varchar) AS String;
+***************************************************************************************
+Q-2 What will be the output of following query : (Explain the result)
+Ans
+    SELECT INSERT("newyork", 4, 4, "jercy"); => newjercy
+      // here it will start delete the character at 4 index and delete 4 character and then add jercy over there;
+
+ ***************************************************************************************
+
+Q-3 Write a query to find position of letter 'd' in the string 'abcdefgh'.
+Ans
+=> SELECT POSITION("d" IN "abcdefgh") AS MatchPosition;
+
+ ***************************************************************************************
+Q-4 Write a query which will output "hello world" for input string "Hello World".
+Ans
+=> SELECT LOWER("Hello World") AS LowercaseText;
+
+ ***************************************************************************************
+
+Q-5 Write a query to find 3 characters from the left of any given string.
+Ans
+=> SELECT LEFT("Hello world", 3) AS ExtractString;
+
+ ***************************************************************************************
+
+Q-6 Write a query to find 3 characters from the right of any given string.
+Ans
+=> SELECT Right("Hello world", 3) AS ExtractString;
+
+ ***************************************************************************************
+
+Q-7 Write a query which will return length of any given string.
+Ans
+=> SELECT Length("Hello world") AS LengthofString;
+
+ ***************************************************************************************
+
+Q-8 Write a query which will output "------abcd" for input string "abcd".
+Ans
+=> SELECT insert('abcd', 1, 0, '----');
+
+ ***************************************************************************************
+
+Q-9 Write a query which will output "abcd......" for input string "abcd".
+Ans
+=> SELECT insert('abcd', 5, 0, '....');
+
+ ***************************************************************************************
+
+Q-10 Write a query which will output "abcd  " for input string "  abcd  ".
+Ans
+=> SELECT LTRIM('     abcd    ') AS LeftTrimmedString;
+
+ ***************************************************************************************
+
+Q-11 Write a query which will output "  abcd" for input string "  abcd  ".
+Ans
+=> SELECT RTRIM('     abcd    ') AS RightTrimmedString;
+
+***************************************************************************************
+ 
+
+Q-12 Write a query which will output "is" for input string "The weather is very nice.".
+Ans
+=> SELECT SUBSTRING('The weather is very nice.', 13, 2) AS subString;
+
+ ***************************************************************************************
+
+Q-13 Write a query which will output "hellohellohello" for input string "hello".
+Ans
+=> SELECT REPEAT("hello", 3);
+
+ ***************************************************************************************
+
+Q-14 Write a query which will output ".ecin yrev si rehtaew ehT" for input string "The weather is very nice.".
+Ans
+=> SELECT REVERSE("The weather is very nice.");
+
+ ***************************************************************************************
+
+Q-15 Explain the use of function SOUNDEX().
+Ans
+=> The SOUNDEX() function returns a four-character code to evaluate the similarity of two expressions.
+   The SOUNDEX() converts the string to a four-character code based on how the string sounds when spoken.
+***************************************************************************************
+ 
+
+Q-16 Write a query which will output "is very nice." for input string "The weather is very nice.".
+Ans
+=> SELECT TRIM('The weather ' from 'The weather is very nice.') AS TrimmedString;
+
+ ***************************************************************************************
+
+Q-17 Explain the use of TRIM function.
+Ans
+=> The TRIM() function removes the space character OR other specified characters from the start or end of a string. 
+   By default, the TRIM() function removes leading and trailing spaces from a string.
+***************************************************************************************

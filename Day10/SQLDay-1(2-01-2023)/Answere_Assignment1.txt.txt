@@ -1,0 +1,90 @@
+ 1 Please create following tables:
+    
+    -   Student_Details
+			
+        -   Name
+
+        -   Standard
+
+        -   Sex
+
+        -   Monthly Present
+
+        -   Daily Hours
+
+Ans   CREATE TABLE Student_3 (Name VARCHAR(20), Standard INT,
+       sex CHAR(1),Monthly_Present INT,Hours INT);
+***************************************************************************************
+
+2  PRODUCTS
+        
+        -   Name
+
+        -   Price
+Ans  CREATE TABLE Student_details (Name VARCHAR(20) NOT NULL,Price INT NOT NULL);
+***************************************************************************************
+
+  3 Materials
+        
+        -   Name
+
+        -   Price (allow to insert value like "Rs. 100")
+
+	-   Effective Date
+
+Ans CREATE TABLE Materials_3( Name VARCHAR(20) NOT NULL,Price VARCHAR(255) NOT NULL,Effective_Date DATE NOT NULL);
+select * from Materials_3;
+***************************************************************************************
+
+ Insert appropriate records in each tables.
+         
+ Ans 
+select * from Student_3;
+ Insert into Student_3(Name,   Standard , sex , Monthly_Present, Hours)values('Deep',10,'M',4,6); 
+  Insert into Student_3(Name,   Standard , sex , Monthly_Present, Hours)values('Darshan',8,'M',14,5); 
+ Insert into Student_3(Name,   Standard , sex , Monthly_Present, Hours)values('Darshit',6,'M',11,8); 
+ Insert into Student_3(Name,   Standard , sex , Monthly_Present, Hours)values('Stuti',12,'F',17,9); 
+ Insert into Student_3(Name,   Standard , sex , Monthly_Present, Hours)values('Jaydeep',7,'M',15,6); 
+
+***************************************************************************************
+
+select * from Product_3;
+ insert into Product_3(Name , Price)values('Product5',10000);
+insert into Product_3(Name , Price)values('Product1',20000);
+ insert into Product_3(Name , Price)values('Product2',30000);
+ insert into Product_3(Name , Price)values('Product3',40000);
+ insert into Product_3(Name , Price)values('Product4',50000);
+***************************************************************************************
+select * from Materials_3;
+insert into Materials_3(Name , Price , Effective_date)values('Material1', 'Rs 100', '2020-12-12)');
+insert into Materials_3(Name , Price , Effective_date)values('Material2', 'Rs 200', '2020-07-12)');
+insert into Materials_3(Name , Price , Effective_date)values('Material3', 'Rs 300', '2020-09-12)');
+insert into Materials_3(Name , Price , Effective_date)values('Material4', 'Rs 400', '2020-10-12)');
+insert into Materials_3(Name , Price , Effective_date)values('Material5', 'Rs 500', '2020-03-12)');
+***************************************************************************************
+ Display all the records for each tables separately.
+Ans 
+select * from Student_3;
+select * from Product_3;
+select * from Materials_3;
+***************************************************************************************
+Remove all the records from each tables (with and without using DELETE statement).
+with Delete statement
+Ans
+delete from Student_3;
+delete from Product_3;
+delete from Materials_3;
+***************************************************************************************
+Without Delete Statement
+
+Ans
+TRUNCATE TABLE Student_3;
+TRUNCATE TABLE Product_3;
+TRUNCATE TABLE Materials_3;
+***************************************************************************************
+
+Delete all the above tables.
+Ans
+DROP  table Student_3;
+DROP  table Product_3;
+DROP  table Materials_3;

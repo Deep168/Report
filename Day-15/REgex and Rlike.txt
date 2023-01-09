@@ -1,0 +1,57 @@
+REGEXP
+SELECT * FROM student_a11  WHERE fname REGEXP '^[d]';
+find student whos name start with d
+ SELECT * FROM student_a11  WHERE fname REGEXP '^[h$]';
+find student whos name start with h
+ SELECT * FROM student_a11  WHERE fname REGEXP '^.{6}$';
+find student whos name contains exactly 6 charactres
+
+
+RLIKE
+SELECT * FROM student_a11
+WHERE fname RLIKE '^d' ;
+
+SELECT fname FROM student_a11 WHERE fname REGEXP '^de';
+
+
+SELECT sname FROM student_a11 WHERE sname REGEXP 'aj|ah' ;
+select * from student_a11;
+
+
+SELECT fname FROM student_a11 WHERE fname REGEXP '[b-g].[e]' ;
+
+SELECT sname FROM student_a11
+  WHERE sname  RLIKE '^[nm][aeiou]';
+
+
+SELECT * FROM Employee   
+WHERE Last_name RLIKE '^S' ;
+check those employees whose last name starts with ‘S’.
+
+SELECT * FROM Employee
+WHERE First_name RLIKE 'i$' ;
+ finds the employees whose first name ends with the letter ‘i’.
+
+SELECT sname FROM student_a11
+  WHERE sname  RLIKE '^[nm][aeiou]';
+
+select  *  from  Employee1 where email   RLIKE ('@gmail.com$');
+
+select  *  from  Employee1 where phoneno   Rlike ('^[0-9](2)');
+
+
+NOT RLIKE
+
+select  *  from  Employee1 where phoneno   not Rlike ('^[0-9](2)');
+
+
+select  *  from  Employee1 where First_name   not Rlike ('^a');
+
+NOT REGEXP
+
+
+select  *  from  Employee1 where First_name   not REGEXP ('^s');
+
+select  *  from  Employee1 where phoneno  not
+  regexp ('^[0-9](5)');
+

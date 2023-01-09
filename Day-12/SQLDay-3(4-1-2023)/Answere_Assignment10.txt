@@ -1,0 +1,133 @@
+Tables Used:
+===========
+	Table - I :	officestaff
+	Fields	:	recid (Primary Key), name, designation, salary, overtimesalary, bossno, addressid (Reference Key)
+Ans
+CREATE TABLE officestaff_deep (
+    recid int,
+    name varchar(20),
+    designation varchar(20),
+    salary int,
+   overtimesalary int,
+bossno int,
+addressid int,
+primary key(recid),
+foreign key(addressid) references address_deep(recid)
+  );
+
+insert into officestaff_deep (recid, name, designation, salary, overtimesalary, bossno, addressid) values(7, 'Khushi', 'Docotr', 9000, 1000, 3, 7);
+insert into officestaff_deep (recid, name, designation, salary, overtimesalary, bossno, addressid) values(8, 'Deep', 'Docotr', 5900, 800, 3, 8);
+insert into officestaff_deep (recid, name, designation, salary, overtimesalary, bossno, addressid) values(9, 'Darshan', 'Engineer', 10000, 2000, 3, 9);
+insert into officestaff_deep (recid, name, designation, salary, overtimesalary, bossno, addressid) values(10, 'stuti', 'Teacher', 15000, 3000, 3, 10);
+
+
+	Table - II :	address
+	Fields :	recid (Primary Key), address1, address2, city, county, postalcode, country
+Ans
+CREATE TABLE address_deep (
+    recid int,
+address1 varchar(255),
+address2 varchar(255),
+    city varchar(20),
+     county varchar(20),
+postalcode int,
+country varchar(20),
+primary key(recid));
+
+insert into address_deep(recid, address1, address2, city, county, postalcode, country) values
+                           (7, 'pal', 'chani jakatanaka', 'Vadodara', 'Gujarat', '300234', 'India');
+insert into address_deep(recid, address1, address2, city, county, postalcode, country) values
+                           (8, 'Thaltej', 'rabari colony', 'Ahemdabad', 'Gujarat', '380008', 'India');
+insert into address_deep(recid, address1, address2, city, county, postalcode, country) values
+                           (10, 'Thaltej', 'rabari colony', 'Ahemdabad', 'Gujarat', '380008', 'India');
+insert into address_deep(recid, address1, address2, city, county, postalcode, country) values
+                           (9, 'pal', 'Adajan', 'surat', 'Gujarat', '395009', 'India');
+
+***************************************************************************************
+Write queries for following requirements:
+
+Q-1	List Name, Designation and Salary of all "officestaff" members.
+Ans
+Select name,  designation , salary from officestaff_deep;
+***************************************************************************************
+Q-2	List Name and Salary of all the people who are working as "Programmer".
+Ans
+select name  , salary from officestaff_deep where designation='programmer';
+***************************************************************************************
+Q-3	List all the information about those people who are earning less than Rs.10,000/- .
+Ans
+select * from officestaff_deep natural join address_deep where salary <10000;
+***************************************************************************************
+Q-4	List all the information about those staff members who fall in the salary range of 	Rs.5000/- to Rs.10,000/- .
+Ans
+select * from officestaff_deep natural join address_deep where salary between 5000 and 10000;
+***************************************************************************************
+Q-5	List Name of all the office staff members in Lower Case.
+Ans
+select LOWER(name) from officestaff_deep;
+***************************************************************************************
+Q-6	List Name of all the office staff members in following format:
+	For example, if name is "umeshbhai" then display it in the format "Umeshbhai".
+Ans
+Select concat(UPPER(LEFT(name,1)),LOWER(substr(name,2))) from officestaff_deep
+***************************************************************************************
+Q-7	List all the information about those people who works for "Nileshbhai".
+Ans
+select * from officestaff_deep natural join address_deep where bossno=10;
+***************************************************************************************
+Q-8	List all the information about those members with salary greater than or equal to Rs.3000/- or working directly under "Nileshbhai".
+Ans
+select * from officestaff_deep natural join address_deep where bossno=10 or salary>=6000;
+***************************************************************************************
+Q-9	List Name, Salary, Over-time Salary of all the office staff members.
+Ans
+Select name,  salary , overtimesalary from officestaff_deep;
+***************************************************************************************
+Q-10	Perform above MySQL statement again, but now 0(Zero) should be substituted for NULL in 	Over-time Salary field.
+Ans
+Select name,  salary , IFNULL(overtimesalary,0) from officestaff_deep;
+***************************************************************************************
+Q-11	List Name and Total Monthly Salary (Salary + Over-time Salary) of all the office staff 	members.
+Ans
+Select name,  (salary+overtimesalary) as TotalMonthlysalary from officestaff_deep;
+***************************************************************************************
+Q-12	List Name and Total Annual Salary of all the office staff members.
+Ans
+Select name,  (salary+overtimesalary)*12  as TotalMonthlysalary from officestaff_deep;
+***************************************************************************************
+Q-13	List Name and Total Daily Salary of all the office staff members. (Consider a month is 	of 30 days).
+Ans
+Select name,  (salary+overtimesalary)/30 as TotalMonthlysalary from officestaff_deep;
+***************************************************************************************
+Q-14	List all the information of the person earning Highest Salary (Salary + Over-time 	Salary) in the staff.
+Ans
+select * from officestaff_deep natural join address_deep where (salary+overtimesalary) in (select max(salary+overtimesalary) from officestaff_deep);
+
+use trainee;
+***************************************************************************************
+Q-15	List all the information of the person earning Least Salary (Salary + Over-time Salary) 	in the staff.
+Ans
+select * from officestaff_deep natural join address_deep where (salary+overtimesalary) in (select min(salary+overtimesalary) from officestaff_deep);
+
+use trainee;
+***************************************************************************************
+Q-16	List all the information about those who earn the Highest Salary (Salary + Over-time 	Salary) and those who earn the Least Salary (Salary + Over-time Salary) in the staff.
+Ans
+select * from officestaff_deep natural join address_deep where (salary+overtimesalary)>= (select max(salary+overtimesalary)
+from officestaff_deep) or (salary+overtimesalary)<= (select min(salary+overtimesalary) from officestaff_deep);
+***************************************************************************************
+Q-17	List all the information about the person who earns more than his boss.
+Ans
+select * from officestaff_deep as id join officestaff_deep as n1 on id.bossno=n1.recid where id.salary > n1.salary;
+***************************************************************************************
+Q-18	List Name, Designation, Salary and City of each staff member.
+Ans
+Select name,  designation , salary,county from officestaff_deep natural join address_deep ;
+***************************************************************************************
+Q-19	Using "address" table list total number of persons residing in "Ahmedabad" city.
+Ans
+select count(recid) from address_deep where city=''Ahemdabad'
+***************************************************************************************
+Q-20	List those City Name where 2 or more than 2 people resides.
+Ans
+select city from address_deep group by city having count(city)>=2;
