@@ -1,0 +1,69 @@
+
+SubQuery
+(select id from JayDeep11 where firstname ='raj');
+
+
+
+select *   from JayDeep11 where id in (select id from JayDeep11 where id > 10);
+
+
+
+select *  from JayDeep11 where id in (select id from JayDeep11 where firstname like "%a" ) or lastname like "%n";
+
+
+
+select email from
+(select firstname , lastname ,email  from JayDeep11 ) as Deri ;
+select firstname , lastname  ,email from JayDeep11
+
+ 
+
+select PostalCode , city ,customerid from (select * from Customers where city like "%n" )
+
+Derive Table
+
+select * from
+(select name,city,count(cus.recid),hiredate,age
+    from customer_a11 as cus inner join salesreps_a11 as sale
+    on cus.salesrepsid = sale.recid inner join office_a11 as off
+    on sale.officeid =off.recid
+    where hiredate>Date('2006-01-01') and age>20 and city like '%pur'
+      group by sale.recid
+     having count(cus.recid>=1)) 
+As Derivetable
+
+
+select * from
+(select company, name, city, creditlimit from customer_a11 as c1 inner join salesrep_a11 as s1 on c1.recid=s1.recid
+inner join office_a11 as o1 on s1.recid=o1.recid)
+     As Derivetable
+
+LEAD AND LAG
+select NAME,  LAG(NAME) over(order by NAME) from CUSTOMERS order by NAME ASC ;
+
+select NAME,  LEAD(NAME) over(order by NAME) from CUSTOMERS order by NAME ASC ;
+
+STRING FUNCTION
+
+SELECT ascii('t');
+
+SELECT char_length('Hello!');
+
+ SELECT CHARACTER_LENGTH('geeks for geeks');
+
+SELECT CONCAT('Geeks', 'forGeeks');
+
+SELECT CONCAT_WS('_', 'geeks', 'for', 'geeks');
+
+SELECT REPEAT('geeks', 2);
+
+SELECT REPLACE('123geeks123', '123',456);
+
+SELECT REVERSE('geeksforgeeks.org');
+
+SELECT SPACE(7);
+
+SUBSTR('geeksforgeeks', 1, 5);
+
+SELECT SUBSTRING_INDEX('www.geeksforgeeks.org', '.', 1);
+

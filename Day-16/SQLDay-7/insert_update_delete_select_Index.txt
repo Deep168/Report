@@ -1,0 +1,114 @@
+MySQl Queries & Indexes	
+1. Insert,Delete,update,select records, Replace,
+ 2. Create ,Drop,show,unique,clustered & Non-clustered Indexes
+
+Ans
+Insert
+CREATE TABLE People(  
+    id int NOT NULL AUTO_INCREMENT,  
+    name varchar(45) NOT NULL,  
+    occupation varchar(35) NOT NULL,  
+    age int,  
+    PRIMARY KEY (id)  
+);  
+
+
+INSERT INTO People (id, name, occupation, age)   
+VALUES (101, 'Peter', 'Engineer', 32);  
+
+INSERT INTO People VALUES  
+(102, 'Joseph', 'Developer', 30),  
+(103, 'Mike', 'Leader', 28),  
+(104, 'Stephen', 'Scientist', 45);  
+
+INSERT INTO People (name, occupation)   
+VALUES ('Stephen', 'Scientist'), ('Bob', 'Actor');  
+
+Update
+CREATE TABLE CUSTOMERS(
+   ID   INT              NOT NULL,
+   NAME VARCHAR (20)     NOT NULL,
+   AGE  INT              NOT NULL,
+   ADDRESS  CHAR (25) ,
+   SALARY   DECIMAL (18, 2),
+   PRIMARY KEY (ID)
+);
+
+
+INSERT INTO CUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (1, 'Ramesh', 32, 'Ahmedabad', 2000.00 );
+
+INSERT INTO CUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (2, 'Khilan', 25, 'Delhi', 1500.00 );
+
+INSERT INTO CUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (3, 'kaushik', 23, 'Kota', 2000.00 );
+
+INSERT INTO CUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (4, 'Chaitali', 25, 'Mumbai', 6500.00 );
+
+INSERT INTO CUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (5, 'Hardik', 27, 'Bhopal', 8500.00 );
+
+INSERT INTO CUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (6, 'Komal', 22, 'MP', 4500.00 );
+
+UPDATE CUSTOMERS
+SET ADDRESS = 'Pune'
+
+
+UPDATE CUSTOMERS
+SET ADDRESS = 'Pune', SALARY = 1000.00;
+WHERE ID = 6;
+
+Delete
+
+ DELETE FROM CUSTOMERS
+WHERE ID = 6;
+
+ DELETE FROM CUSTOMERS;
+
+Select
+
+ SELECT ID, NAME, SALARY FROM CUSTOMERS;
+
+
+SELECT * FROM CUSTOMERS;
+
+Clustered and Non clustersed Indexes
+
+ CREATE TABLE CUSTOMERS(
+   ID   INT              NOT NULL,
+   NAME VARCHAR (20)     NOT NULL,
+   AGE  INT              NOT NULL,
+   ADDRESS  CHAR (25) ,
+   SALARY   DECIMAL (18, 2),
+   PRIMARY KEY (ID)
+);
+
+
+INSERT INTO CUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (1, 'Ramesh', 32, 'Ahmedabad', 2000.00 );
+
+INSERT INTO CUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (2, 'Khilan', 25, 'Delhi', 1500.00 );
+
+INSERT INTO CUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (3, 'kaushik', 23, 'Kota', 2000.00 );
+
+INSERT INTO CUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (4, 'Chaitali', 25, 'Mumbai', 6500.00 );
+
+INSERT INTO CUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (5, 'Hardik', 27, 'Bhopal', 8500.00 );
+
+INSERT INTO CUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (6, 'Komal', 22, 'MP', 4500.00 );
+select * from CUSTOMERS;
+
+Execute sp_helpindex CUSTOMERS;
+-- CREATE NONCLUSTERED INDEX IX_CUSTOMERS_NAME ON CUSTOMERS(NAME) 
+SHOW INDEX FROM CUSTOMERS
+
+ CREATE CLUSTERED INDEX ab_CUSTOMERS_NAME ON CUSTOMERS(NAME) 
+SHOW INDEX FROM CUSTOMERS
