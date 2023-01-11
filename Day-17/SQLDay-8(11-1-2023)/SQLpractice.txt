@@ -1,0 +1,62 @@
+SELECT   first_name, last_name,gender FROM patients where gender='M';
+
+SELECT   first_name, last_name FROM patients where allergies is null;
+
+SELECT   first_name FROM patients where first_name like  'C%';
+
+SELECT   first_name, last_name FROM patients where weight between   100 and 120;
+
+update patients set allergies = 'NKA' where allergies is null;
+
+select concat(first_name," ", last_name) as full_name from patients;
+
+select first_name, last_name,province_name from patients inner join province_names on patients.province_id=province_names.province_id;
+
+select  count(patient_id) AS total_patients from patients where year(birth_date) = 2010;
+
+select  first_name, last_name,height from patients where height in(select max(height)from patients);
+
+
+select distinct YEAR(birth_date)from patients order by birth_date asc
+
+select  distinct(first_name) from patients group by 
+
+select patient_id , first_name from patients where 
+first_name  like 's____%s'
+
+select   patients.patient_id , patients.first_name, patients.last_name from patients 
+inner join admissions on    patients.patient_id=admissions.patient_id where
+diagnosis='Dementia'
+
+select first_name from patients order by length(first_name),first_name ASC
+
+select 
+count(CASE when gender="M" then 1 END)AS male_count,
+count(CASE when gender="F" then 1 END)AS female_count
+from patients
+
+select first_name, last_name, allergies from patients where allergies='Penicillin' or allergies= 'Morphine'order by allergies, first_name,last_name
+ASc
+
+select admissions.patient_id,diagnosis from admissions group by  patient_id,diagnosis having count(*)>1
+first_name having count(first_name)=1
+
+SELECT FLOOR(patients.weight/10) * 10 as weightGroup, count(*) as cnt
+FROM patients
+GROUP BY FLOOR(patients.weight/10)
+ORDER BY FLOOR(patients.weight/10) DESC
+
+select patient_id,weight,height, 
+CASE
+    when (weight/POW((height*0.01),2)) >= 30 THEN 1
+    else 0
+END as isObese from patients
+
+select patients.patient_id, patients.first_name,patients.last_name,specialty from patients inner join admissions on
+patients.patient_id=admissions.patient_id inner join doctors on admissions.attending_doctor_id=doctors.doctor_id
+where doctors.first_name= 'Lisa' AND admissions.diagnosis='Epilepsy'
+
+select patients.patient_id, concat(patients.patient_id,len(last_name),year(birth_date))as
+temp_password  from   patients  inner join admissions on 
+patients.patient_id=admissions.patient_id group by
+admissions.patient_id

@@ -1,0 +1,260 @@
+
+
+CREATE TABLE Employee
+(
+Employee_id INT identity(1,1),
+First_name VARCHAR(100) NOT NULL,
+Last_name VARCHAR(100) NOT NULL,
+Joining_Date DATE NOT NULL,
+PRIMARY KEY(Employee_id )
+
+);
+
+
+INSERT INTO Employee
+(First_name ,Last_name , Joining_Date )
+VALUES
+('Sayantan', 'Majumdar', '2000-01-11'),
+('Anushka', 'Samanta', '2002-11-10' ),
+('Sayan', 'Sharma', '2005-06-11' ),
+('Shayari', 'Das', '2008-01-21' ),
+('Sayani', 'Jain', '2008-02-01' ),
+('Tapan', 'Samanta', '2010-01-11' ),
+('Deepak', 'Sharma', '2014-12-01'  ),
+('Ankana', 'Jana', '2018-08-17'),
+('Shreya', 'Ghosh', '2020-09-10') ;
+select * from Employee;
+
+create PROCEDURE getEmpployeedata
+
+AS
+
+BEGIN
+
+    select * from Employee;
+
+END
+
+getEmpployeedata
+
+
+CREATE PROCEDURE getEmployeedata
+@Employee_id int,
+@name1 char(50) OUT
+AS
+BEGIN
+select @name1=First_name from Employee where Employee_id = @Employee_id;
+END
+DECLARE @name1 char(50)
+
+exec getEmployeedata 2,@name1 out;
+
+print @name1
+
+CREATE PROC sp
+  AS
+BEGIN
+  select * from Employee
+  END
+
+ 
+
+-- => call a procedure  
+Exec sp
+
+
+ CREATE PROC sp2
+  @Employee_id  INT
+AS
+  BEGIN
+   select First_name from Employee where Employee_id=5
+   END
+  EXEC SP2 7  
+
+
+CREATE TABLE Employee1
+(
+Employee_id INT ,
+First_name VARCHAR(100) NOT NULL,
+Last_name VARCHAR(100) NOT NULL,
+Joining_Date DATE NOT NULL,
+PRIMARY KEY(Employee_id )
+
+);
+
+ INSERT INTO Employee1
+(Employee_id,First_name ,Last_name , Joining_Date )
+VALUES
+(1,'Sayantan', 'Majumdar', '2000-01-11'),
+(2,'Anushka', 'Samanta', '2002-11-10' ),
+(3,'Sayan', 'Sharma', '2005-06-11' ),
+(4,'Shayari', 'Das', '2008-01-21' ),
+(5,'Sayani', 'Jain', '2008-02-01' ),
+(6,'Tapan', 'Samanta', '2010-01-11' ),
+(7,'Deepak', 'Sharma', '2014-12-01'  ),
+(8,'Ankana', 'Jana', '2018-08-17'),
+(9,'Shreya', 'Ghosh', '2020-09-10') ;
+
+
+  select * from Employee1;
+
+
+Insert
+
+create procedure  spinsert6
+@Employee_id int,
+@First_name VARCHAR(20),
+@Last_name VARCHAR(20),
+@Joining_Date Date
+AS 
+BEGIN
+insert into Employee1 VALUES
+(@Employee_id  ,@First_name ,@Last_name, @Joining_Date )
+END
+exec spinsert6 10,'sky','Patel','2022-9-5'
+
+Delete
+ create procedure  spdelete
+@Employee_id int
+
+AS 
+BEGIN
+delete from Employee1  where Employee_id=@Employee_id
+END
+exec spdelete 10
+ 
+Update
+create procedure  spupdate
+@Employee_id int,
+@First_name VARCHAR(20),
+@Last_name VARCHAR(20),
+@Joining_Date Date
+AS 
+BEGIN
+update Employee1 set First_name=@First_name, Last_name=@Last_name,Joining_Date=@Joining_Date where Employee_id=@Employee_id
+END
+exec spupdate 10, 'sky','Patel','2022-9-5';
+
+ 
+
+
+
+ CREATE TABLE CUSTOMERS(
+   ID   INT              NOT NULL,
+   NAME VARCHAR (20)     NOT NULL,
+   AGE  INT              NOT NULL,
+   ADDRESS  CHAR (25) ,
+   SALARY   DECIMAL (18, 2),
+   PRIMARY KEY (ID)
+);
+
+
+INSERT INTO CUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (1, 'Ramesh', 32, 'Ahmedabad', 2000.00 );
+
+INSERT INTO CUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (2, 'Khilan', 25, 'Delhi', 1500.00 );
+
+INSERT INTO CUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (3, 'kaushik', 23, 'Kota', 2000.00 );
+
+INSERT INTO CUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (4, 'Chaitali', 25, 'Mumbai', 6500.00 );
+
+INSERT INTO CUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (5, 'Hardik', 27, 'Bhopal', 8500.00 );
+
+INSERT INTO CUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (6, 'Komal', 22, 'MP', 4500.00 );
+select * from CUSTOMERS;
+
+Execute sp_helpindex CUSTOMERS;
+-- CREATE NONCLUSTERED INDEX IX_CUSTOMERS_NAME ON CUSTOMERS(NAME) 
+CREATE CLUSTERED INDEX ab_CUSTOMERS_AGE ON CUSTOMERS(AGE) 
+drop index PK__CUSTOMER__3214EC27801BA17C from CUSTOMERS;
+
+
+select NAME,  LAG(NAME) over(order by NAME) from CUSTOMERS order by NAME ASC ;
+SELECT char_length('Hello!');
+
+SELECT REPLACE('123geeks123', '123',456);
+
+CREATE TABLE tab3 (
+    Id INT PRIMARY KEY
+);
+
+INSERT INTO tab3 VALUES (1), (2), (3), (4);
+
+CREATE TABLE tab4 (
+    Id INT PRIMARY KEY
+);
+
+INSERT INTO tab4 VALUES (3), (4), (5), (6);
+
+
+SELECT Id
+FROM tab3
+MINUS
+SELECT Id
+FROM tab4;
+
+CREATE TABLE geek_demo (Name VARCHAR(10) );
+
+INSERT INTO geek_demo (Name)
+VALUES('A'), ('B'), ('B'), ('C'), ('C'), ('D'), ('E');
+
+
+
+
+
+SELECT Name,
+RANK () OVER (
+ORDER BY Name
+) AS Rank_no 
+FROM geek_demo;
+
+DATE '2012-05-29';
+
+time '11:11:00'
+
+SELECT GETDATE();
+
+SELECT TIME();
+
+SELECT TIME("2017-08-15 19:30:10.000001");
+
+Create Procedure sumThree
+@n1 int,
+@n2 int,
+@result int output as
+Set @result = @n1+@n2
+Declare @result int
+Execute sumThree 5,30,@result output
+Select @result
+
+CREATE PROCEDURE Fibonacci4 @Num int
+AS
+BEGIN
+	DECLARE 
+		@Num1 int,
+		@Num2 int,
+		@Num3 int,
+		@Counter int
+	SET @Num1= 0
+	SET @Num2= 1
+	SET @Counter= 0
+	SET @Num3=0
+	PRINT('Fibonacci Series')
+	PRINT(@Num1)
+	PRINT(@Num2)
+	WHILE @Counter < @Num -2
+	BEGIN
+		SET @Num3= @Num1 + @Num2
+		PRINT(@Num3)
+		SET @Counter = @Counter + 1
+		SET @Num1 = @Num2
+		SET @Num2 = @Num3
+	END
+END
+
+EXEC Fibonacci4 4
