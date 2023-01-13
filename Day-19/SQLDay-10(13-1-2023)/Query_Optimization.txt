@@ -1,0 +1,22 @@
+Select only column you need
+ select * from customers;  // AVOID THIS
+
+select name,customer_id,city from customers;
+
+
+Use LIMIT to preview Query results.
+
+select name from customers LIMIT 50;
+
+select TOP 50 name from customers
+
+Use Wlidcards only at end of Query
+
+select name from customers where state ='%A%'// Avoid this if you can
+
+select name from customers where state = 'A%'
+
+Run large Query during peak hours 
+
+like 2:00 AM to 5:00 AM
+
