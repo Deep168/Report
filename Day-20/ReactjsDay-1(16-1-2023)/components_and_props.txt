@@ -1,0 +1,193 @@
+Class component
+App.js
+
+import React from "react";
+import "./style.css";
+import Profile from './Profile'
+
+ export default function App() {
+  return (
+     
+     <Profile />
+     
+  );
+}
+
+
+
+Profile.js
+import React from 'react';
+import "./style.css";
+ class Profile extends React.Component{
+   render(){
+     return (
+     <div>
+       <h1> Profile </h1>
+     </div>
+     )
+   }
+ }
+
+ export default Profile
+*************************************************************************************************
+Functional Components
+
+App.js
+
+import React from "react";
+import "./style.css";
+import Profile from './Profile'
+
+ export default function App() {
+  return (
+     
+     <Profile />
+     
+  );
+}
+Profile.js
+import React from 'react';
+import "./style.css";
+ function Profile(){
+   const red=()=>{
+     
+
+    alert("red function called");
+   }
+     return (
+     <div>
+       <h1 onClick={red}> Profile </h1>
+     </div>
+     )
+   
+ }
+**********************************************************************************************
+ Props with Functional Component
+App.js
+
+import React from "react";
+import "./style.css";
+import Profile from './Profile'
+
+ export default function App() {
+  return (
+     
+     <Profile   text:{{name:'peter'}} data: "Profile data"/>
+     
+  );
+}
+
+Profile.js
+import React from 'react';
+import "./style.css";
+ function Profile(p){
+   const red=()=>{
+     
+
+    alert("red function called");
+   }
+     return (
+     <div>
+       <h1 onClick={red}> {p.text} </h1>
+      <h1 onClick={red}> {p.data} </h1>
+     </div>
+     )
+   
+ }
+
+*********************************************************************************************
+ Props with class Component
+
+Profile.js
+import React from 'react';
+import "./style.css";
+ class Profile extends React.Component{
+   render(){
+     return (
+     <div>
+       <h1> {this.props.text.name} </h1>
+       <h1> {this.props.data} </h1>
+     </div>
+     )
+   }
+ }
+
+ export default Profile
+
+App.js
+
+import React from "react";
+import "./style.css";
+import Profile from './Profile'
+
+ export default function App() {
+  return (
+     
+     <Profile   text:{{name:'peter'}} data: "Profile data"/>
+     
+  );
+}
+
+******************************************************************************************
+STATE
+
+Profile.js
+import React from 'react';
+import "./style.css";
+ class Profile extends React.Component{
+constructor(){
+super();
+this.state{
+name:'peter'
+Email:'peter@test.com' 
+}
+}
+   render(){
+     return (
+     <div>
+       <h1> {this.state.name} </h1>
+       <h1> {this.state.Email} </h1>
+     </div>
+     )
+   }
+ }
+
+ export default Profile
+
+MODIFY THE STATE
+
+Profile.js
+import React from 'react';
+import "./style.css";
+ class Profile extends React.Component{
+constructor(){
+super();
+this.state{
+name:'peter'
+Email:'peter@test.com' 
+count=0;
+}
+}
+updatestate(){
+this.setstate({
+name:'Bruce'
+count: this.count.count++;
+})
+
+}
+   render(){
+     return (
+     <div>
+ <h1> {this.state.name} </h1>
+       <h1> {this.state.count} </h1>
+       <button onClick={()=> {this.updatestate()}}>Updatestate </button>
+       
+     </div>
+     )
+   }
+ }
+
+ export default Profile
+
+
+
