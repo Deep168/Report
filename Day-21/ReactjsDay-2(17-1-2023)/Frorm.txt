@@ -1,0 +1,32 @@
+  		
+
+
+						 formdemo.jsx
+import React, { useState } from "react"; const Form = () =>{
+    const[name,setName] = useState("")
+    const[fullname,setfullname] = useState() 
+    const get = (event) =>{
+        console.log(event.target.value);
+        setName(event.target.value);
+    }     const show = () =>{
+        setfullname(name);
+    }
+    return(<div><h1> HELLO {fullname} </h1><input type='text' placeholder='enter name' value={name} onChange={get} ></input><button onClick={show}> SHOW DATA </button></div>
+    );
+} export default Form
+
+
+       				App.jsx
+import './App.css'
+//import Stated from './components/statedemo';
+//import propdemo from './components/propdemo'
+//import Con_rend from './components/conditional_rendering';
+//import Listkey from './components/list_keys';
+import Form from './components/formdemo'; function App() {
+  return (
+    //<propdemo sname='vishal' lname='sarvaiya' />
+    //<Stated />
+   // <Con_rend/>
+    //<Listkey/><Form/> 
+  )
+} export default App;

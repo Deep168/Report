@@ -1,0 +1,79 @@
+
+Conditional Rendering if-else and else-if 
+Profile.js
+import React from 'react'
+import {useState} from 'react';
+ function Profile(){
+ const [loggedin, setloggedin]= useState(1)
+   return (
+    div
+        {loggedinh1Welcome User1h1loggedin==2h1Welcome User2h1h1Welcome User3h1}
+    div
+   )
+   
+ }
+
+ export default Profile;
+
+Index.js
+import React from 'react'
+import ReactDOM from 'react-domclient'
+import App from '.App'
+import Profile from '.profile'
+import '.index.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  React.StrictMode
+    App 
+    Profile 
+  React.StrictMode,
+)
+
+App.js
+import { useState } from 'react'
+import reactLogo from '.assetsreact.svg'
+import '.App.css'
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  return (
+    div className=App
+     h1Reactjsh1
+    div
+  )
+}
+
+**************************************************************************************
+
+                          			conditional_rendering.jsx
+import React from "react";
+import Stated from "./statedemo";
+//import Propdemo from "./propdemo"; 
+let file_name = "propdemo"
+const Con_rend = () =>{
+            if(file_name === "propdemo")
+            {
+                return <Stated/>;
+            }
+            else
+            {
+               return <h1>no</h1>
+            }
+        }; 
+
+
+export default Con_rend                              app.jsx
+import './App.css'
+//import Stated from './components/statedemo';
+//import propdemo from './components/propdemo'
+import Con_rend from './components/conditional_rendering'; function App() {
+  return (
+    //<propdemo sname='vishal' lname='sarvaiya' />
+    //<Stated /><Con_rend/>   
+  )
+} export default App;
+
+
+
+
