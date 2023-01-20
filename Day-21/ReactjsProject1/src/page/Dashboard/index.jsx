@@ -6,14 +6,16 @@ import List from './List';
 import Add from './Add';
 import Edit from './Edit';
 
-import { employeesData } from '../../data';
+import  Data  from './data';
 
 function Dashboard() {
 
-    const [employees, setEmployees] = useState(employeesData);
+    const [employees, setEmployees] = useState(Data);
     const [selectedEmployee, setSelectedEmployee] = useState(null);
     const [isAdding, setIsAdding] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
+   
+   
 
     const handleEdit = (id) => {
         const [employee] = employees.filter(employee => employee.id === id);
@@ -59,6 +61,7 @@ function Dashboard() {
                     <List
                         employees={employees}
                         handleEdit={handleEdit}
+                        setEmployees={setEmployees}
                         handleDelete={handleDelete}
                     />
                 </>
@@ -80,8 +83,12 @@ function Dashboard() {
                     setIsEditing={setIsEditing}
                 />
             )}
+           
         </div>
     )
+   
+    
+    
 }
 
 export default Dashboard;
