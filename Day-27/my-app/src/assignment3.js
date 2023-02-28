@@ -73,6 +73,8 @@ function Assignment3() {
           <br></br><br></br>
           <input type="text" name="number1" id="n1" value={n1} placeholder="create file"  onChange={(e) => { setn1(e.target.value) }} />
           <input type="submit" value="create file" onClick={fetchData2}/>
+          <input type="text" name="number1" id="n1" value={n1} placeholder="create file"  onChange={(e) => { setn1(e.target.value) }} />
+          <input type="submit" value="create file" onClick={fetchData2}/>
           <br></br><br></br>
           <input type="text" name="number2" id="n2" value={n2} placeholder="delete file"  onChange={(e) => { setn2(e.target.value) }} />
           <input type="submit" value="delete file" onClick={fetchData3}/>

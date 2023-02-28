@@ -35,17 +35,17 @@ function List({ employees, handleEdit, handleDelete, setEmployees }) {
                 <button className="btn btn-primary" type="submit" onClick={() => handleSearch()}>Search</button>
             </div>
             <br></br>
-            <table className='striped-table'>
+            <table className="table table-striped">
                 <thead>
                     <tr>
-                        <th>No.</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
+                        <th scope="col">No.</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Email</th>
 
-                        <th>Gender</th>
-                        <th>Department</th>
-                        <th>Skills</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Department</th>
+                        <th scope="col">Skills</th>
                         <th colSpan={2} className="text-center">
                             Actions
                         </th>
