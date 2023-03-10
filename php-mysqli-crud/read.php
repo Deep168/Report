@@ -44,6 +44,8 @@ $fname=$row['FirstName'];
 
 ?>
  <tr>
+  <th></th>
+  <td><img src="<?= $row['image'] ?>" height="60px" width="60px" border-radius="60%"></td>
     <th>First Name</th>
     <td><?= $fname; ?></td>
     <th>Last Name</th>
